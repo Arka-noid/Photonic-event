@@ -4,6 +4,11 @@ on:
   schedule:
     # Lunedì e giovedì alle 06:15 UTC. Il cron di GitHub Actions è sempre in UTC.
     - cron: "15 6 * * 1,4"
+  # GitHub registra un workflow solo quando gira la prima volta: finché non è
+  # registrato non è avviabile via API. Questo trigger, limitato al file stesso,
+  # gli dà quella prima esecuzione e fa da smoke test quando lo si modifica.
+  push:
+    paths: [".github/workflows/collect.yml"]
   workflow_dispatch:
     inputs:
       mode:

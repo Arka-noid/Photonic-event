@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Test CFP feed</title>
+    <item>
+      <title>NEUROPHOT 2026 : Neuromorphic Photonics Conference</title>
+      <link>https://example.test/neurophot</link>
+      <description>Lisbon, Portugal, 10-14 May 2026. Abstract deadline: 1 December 2025.</description>
+    </item>
+    <item>
+      <title>ICBAKE 2026 : International Conference on Baking</title>
+      <link>https://example.test/icbake</link>
+      <description>Vienna, Austria, 3-5 March 2026.</description>
+    </item>
+  </channel>
+</rss>

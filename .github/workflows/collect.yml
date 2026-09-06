@@ -1,0 +1,76 @@
+name: Raccolta eventi
+
+on:
+  schedule:
+    # Lunedì e giovedì alle 06:15 UTC. Il cron di GitHub Actions è sempre in UTC.
+    - cron: "15 6 * * 1,4"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "collect = raccolta normale; probe = diagnostica delle fonti"
+        type: choice
+        options: [collect, probe]
+        default: collect
+      dry_run:
+        description: "Non inviare nulla su Telegram"
+        type: boolean
+        default: false
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installa le dipendenze
+        run: pip install -r requirements.txt
+
+      # La diagnostica scarica ogni fonte e salva le risposte grezze: è il modo
+      # previsto per tarare i selettori CSS, che non erano verificabili durante
+      # lo sviluppo (rete chiusa verso i siti delle società scientifiche).
+      - name: Diagnostica delle fonti
+        if: inputs.mode == 'probe'
+        run: python -m collector.run probe
+
+      - name: Carica le risposte grezze
+        if: inputs.mode == 'probe'
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-output
+          path: probe-output/
+          retention-days: 14
+
+      - name: Raccolta e digest
+        if: inputs.mode != 'probe'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Assente finché non viene configurata: la fonte LLM si disattiva da sola.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m collector.run collect ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Committa i dati aggiornati
+        if: inputs.mode != 'probe'
+        run: |
+          if [ -z "$(git status --porcelain data/)" ]; then
+            echo "nessuna variazione nei dati"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "dati: aggiornamento eventi $(date -u +%Y-%m-%d)"
+          git pull --rebase --autostash
+          git push

@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: ["**"]
+    paths: ["collector/**", "tests/**", "requirements*.txt", ".github/workflows/tests.yml"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q
+      # La raccolta offline gira sulle fixture: verifica l'intera pipeline
+      # (fonti → store → digest) senza toccare la rete.
+      - run: python -m collector.run collect --offline --dry-run --data-dir /tmp/ci-data

@@ -1,0 +1,20 @@
+- title: NEURIPS
+  year: 2026
+  id: neurips26
+  link: https://neurips.cc/Conferences/2026
+  deadline: '2026-05-15 23:59:59'
+  abstract_deadline: '2026-05-08 23:59:59'
+  place: Vancouver, Canada
+  date: December 06-12, 2026
+  start: 2026-12-06
+  end: 2026-12-12
+  sub: ML
+- title: OLDCONF
+  year: 2019
+  id: old19
+  link: https://example.test/old
+  deadline: '2019-01-01 23:59:59'
+  place: Nowhere
+  start: 2019-05-01
+  end: 2019-05-03
+  sub: ML

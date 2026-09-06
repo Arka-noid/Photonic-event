@@ -1,0 +1,56 @@
+name: Promemoria scadenze
+
+on:
+  schedule:
+    # Ogni giorno alle 07:00 UTC. Gira sui dati già raccolti: nessuna richiesta
+    # verso l'esterno oltre a Telegram, quindi non può fallire per colpa di una
+    # fonte irraggiungibile.
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Non inviare nulla su Telegram"
+        type: boolean
+        default: false
+
+concurrency:
+  group: remind
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installa le dipendenze
+        run: pip install -r requirements.txt
+
+      - name: Invia i promemoria
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m collector.run remind ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      # Le soglie già inviate sono tracciate in data/events.json: senza questo
+      # commit lo stesso promemoria ripartirebbe ogni giorno.
+      - name: Salva le soglie già notificate
+        run: |
+          if [ -z "$(git status --porcelain data/)" ]; then
+            echo "nessun promemoria da registrare"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "dati: promemoria inviati $(date -u +%Y-%m-%d)"
+          git pull --rebase --autostash
+          git push

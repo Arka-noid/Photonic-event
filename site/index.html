@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photonic-event — fotonica &amp; reti neurali</title>
+<meta name="description" content="Conferenze, school e workshop su fotonica e reti neurali, con le scadenze in evidenza.">
+<meta name="theme-color" content="#0b1020">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Photonic-event</h1>
+      <p class="tagline">Conferenze, school e workshop su <strong>fotonica</strong> e <strong>reti neurali</strong></p>
+    </div>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambia tema">◐</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="controls" aria-label="Filtri">
+    <input id="search" type="search" placeholder="Cerca per titolo, luogo, argomento…" aria-label="Cerca">
+
+    <div class="filter-row" role="group" aria-label="Argomento">
+      <span class="filter-label">Argomento</span>
+      <div class="chips" id="filter-topic"></div>
+    </div>
+    <div class="filter-row" role="group" aria-label="Tipo">
+      <span class="filter-label">Tipo</span>
+      <div class="chips" id="filter-kind"></div>
+    </div>
+    <div class="filter-row" role="group" aria-label="Dove e quando">
+      <span class="filter-label">Dove / quando</span>
+      <div class="chips" id="filter-misc"></div>
+    </div>
+  </section>
+
+  <p id="summary" class="summary" role="status"></p>
+
+  <section id="deadlines" class="panel deadlines" hidden>
+    <h2>⏳ Scadenze nei prossimi 60 giorni</h2>
+    <ul id="deadline-list"></ul>
+  </section>
+
+  <section id="results" aria-live="polite"></section>
+
+  <section id="health" class="panel health" hidden>
+    <h2>🩺 Stato delle fonti</h2>
+    <p class="muted" id="health-summary"></p>
+    <ul id="health-list"></ul>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p id="generated" class="muted"></p>
+  <p class="muted">
+    Le voci marcate <span class="badge badge-unconfirmed">date da confermare</span> sono edizioni attese,
+    non ancora confermate dalla pagina ufficiale.
+    <a href="https://github.com/Arka-noid/Photonic-event">Codice e fonti su GitHub</a>.
+  </p>
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>

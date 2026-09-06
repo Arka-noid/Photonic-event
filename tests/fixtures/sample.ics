@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Test Optics Society//Events//EN
+BEGIN:VEVENT
+UID:evt-1@test
+SUMMARY:International Workshop on Photonic Neural Networks
+DTSTART;VALUE=DATE:20260615
+DTEND;VALUE=DATE:20260619
+LOCATION:Trento, Italy
+URL:https://example.test/pnn2026
+DESCRIPTION:Abstract deadline: 15 February 2026. Focus on optical computing.
+END:VEVENT
+BEGIN:VEVENT
+UID:evt-2@test
+SUMMARY:Annual Gathering of Cheese Makers
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260703
+LOCATION:Gouda, Netherlands
+END:VEVENT
+BEGIN:VEVENT
+UID:evt-3@test
+SUMMARY:Summer School on Silicon Photonics
+DTSTART;VALUE=DATE:20260901
+DTEND;VALUE=DATE:20260905
+LOCATION:Gent, Belgium
+END:VEVENT
+END:VCALENDAR

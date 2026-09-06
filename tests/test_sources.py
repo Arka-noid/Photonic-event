@@ -128,7 +128,7 @@ def test_eventi_gia_conclusi_non_entrano_come_novita(tmp_path):
     )
     try:
         store = Store(tmp_path / "events.json")
-        diff, _ = collect(registry, store, Fetcher(offline=True), date(2026, 9, 6))
+        diff, _, _ = collect(registry, store, Fetcher(offline=True), date(2026, 9, 6))
         assert [e.title for e in diff.new] == ["Photonics Next 2027"]
     finally:
         del pipeline.HANDLERS["fake"]
@@ -194,3 +194,114 @@ def test_le_scadenze_si_filtrano_anche_quando_la_data_in_pagina_e_rifiutata():
     evento = events[0]
     assert evento.start == date(2027, 7, 1) and evento.confidence == "unconfirmed"
     assert evento.deadlines == {}, "la scadenza dell'edizione precedente va scartata"
+
+
+# -- formato degli aggregatori ----------------------------------------------
+
+def test_luogo_estratto_dalle_parentesi_quadre():
+    from collector.sources.rss import extract_location
+
+    assert extract_location("Conf [Qingdao, China] [Aug 7, 2026 - Aug 9, 2026]") == "Qingdao, China"
+    assert extract_location("Workshop @ ECML [Naples] [Sep 7, 2026 - Sep 7, 2026]") == "Naples"
+    # il gruppo con il mese è la data, non il luogo
+    assert extract_location("Conf [Aug 7, 2026 - Aug 9, 2026]") is None
+    assert extract_location("Senza parentesi") is None
+
+
+def test_rss_di_un_aggregatore_conserva_la_scheda_e_la_data_di_fine():
+    entry = {"id": "wikicfp-test", "topics_default": ["ml"], "is_listing": True}
+    events = rss.parse(_read("sample_wikicfp.xml"), entry)
+
+    assert len(events) == 1
+    evento = events[0]
+    assert (evento.start, evento.end) == (date(2026, 8, 7), date(2026, 8, 9))
+    assert evento.location == "Qingdao, China"
+    assert evento.region == "asia"
+    assert evento.listing_url == "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=1"
+    assert not evento.link_resolved
+
+
+# -- risoluzione del link ufficiale ------------------------------------------
+
+def test_link_ufficiale_letto_accanto_alletichetta():
+    from collector.links import resolve_official_url
+
+    pagina = b"""<html><body><table>
+      <tr><td>When</td><td>Aug 7, 2026</td></tr>
+      <tr><td>Link:</td><td><a href="http://www.icaann.org/">http://www.icaann.org/</a></td></tr>
+    </table><a href="https://twitter.com/wikicfp">twitter</a></body></html>"""
+    assert resolve_official_url(pagina, "http://www.wikicfp.com/x") == "http://www.icaann.org/"
+
+
+def test_senza_etichetta_si_ripiega_sul_primo_esterno():
+    from collector.links import resolve_official_url
+
+    pagina = b'<html><body><a href="https://conf2026.example.org/">sito</a></body></html>'
+    assert resolve_official_url(pagina, "http://www.wikicfp.com/x") == "https://conf2026.example.org/"
+
+
+def test_se_non_ce_nulla_di_utile_non_si_inventa_un_url():
+    from collector.links import resolve_official_url
+
+    pagina = b'<html><body><a href="http://www.wikicfp.com/y">y</a><a href="mailto:a@b.c">m</a></body></html>'
+    assert resolve_official_url(pagina, "http://www.wikicfp.com/x") is None
+
+
+def test_la_risoluzione_si_tenta_una_volta_sola_per_evento(tmp_path):
+    from collector.models import Event
+    from collector.pipeline import resolve_links
+    from collector.sources.base import FetchResult
+    from collector.store import Store
+
+    pagina = b'<html><body><table><tr><td>Link:</td><td><a href="http://vero.example/">v</a></td></tr></table></body></html>'
+
+    class FintoFetcher:
+        offline = False
+
+        def __init__(self):
+            self.richieste = []
+
+        def get(self, url, fixture=None):
+            self.richieste.append(url)
+            if "rotta" in url:
+                return FetchResult(False, 404, error="HTTP 404")
+            return FetchResult(True, 200, pagina)
+
+    store = Store(tmp_path / "events.json")
+    store.upsert_all([
+        Event(title="Con scheda 2026", url="http://wikicfp.test/a", listing_url="http://wikicfp.test/a"),
+        Event(title="Scheda rotta 2026", url="http://wikicfp.test/rotta", listing_url="http://wikicfp.test/rotta"),
+        Event(title="CLEO 2027", url="https://cleoconference.org/"),
+    ], date(2026, 9, 6))
+
+    fetcher = FintoFetcher()
+    assert resolve_links(store, fetcher) == (1, 2)
+
+    per_titolo = {e.title: e for e in store.events.values()}
+    assert per_titolo["Con scheda 2026"].url == "http://vero.example/"
+    # la scheda irraggiungibile resta puntata a sé stessa, non a un URL inventato
+    assert per_titolo["Scheda rotta 2026"].url == "http://wikicfp.test/rotta"
+    # un evento senza scheda non viene nemmeno toccato
+    assert per_titolo["CLEO 2027"].link_resolved is False
+
+    # secondo giro: nessuna richiesta ripetuta, nemmeno per quella fallita
+    secondo = FintoFetcher()
+    assert resolve_links(store, secondo) == (0, 0)
+    assert secondo.richieste == []
+
+
+def test_il_link_risolto_sopravvive_alla_raccolta_successiva(tmp_path):
+    from collector.models import Event
+    from collector.store import Store
+
+    store = Store(tmp_path / "events.json")
+    store.upsert_all([Event(title="Conf 2026", url="http://wikicfp.test/a",
+                            listing_url="http://wikicfp.test/a")], date(2026, 9, 6))
+    evento = next(iter(store.events.values()))
+    evento.url, evento.link_resolved = "http://vero.example/", True
+
+    # la fonte ripropone il link grezzo della scheda a ogni giro
+    store.upsert_all([Event(title="Conf 2026", url="http://wikicfp.test/a",
+                            listing_url="http://wikicfp.test/a")], date(2026, 9, 9))
+    assert evento.url == "http://vero.example/"
+    assert evento.link_resolved is True

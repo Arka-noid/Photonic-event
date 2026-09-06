@@ -87,9 +87,12 @@ def merge_event(existing: Event, incoming: Event, today: date) -> list[str]:
 
     # Campi descrittivi: si riempiono se mancano, senza generare "aggiornamenti"
     # rumorosi nel digest.
-    for attr in ("url", "location", "description"):
+    for attr in ("url", "listing_url", "location", "description"):
         if not getattr(existing, attr) and getattr(incoming, attr):
             setattr(existing, attr, getattr(incoming, attr))
+    # Il link risolto non va perso: la fonte lo riporta grezzo a ogni giro, e
+    # senza questo l'evento tornerebbe a puntare alla scheda dopo ogni raccolta.
+    existing.link_resolved = existing.link_resolved or incoming.link_resolved
     if existing.region in ("unknown", "") and incoming.region not in ("unknown", ""):
         existing.region = incoming.region
     if incoming.topics:

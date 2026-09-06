@@ -150,3 +150,8 @@ h1 { margin: 0; font-size: 1.35rem; letter-spacing: -.01em; }
 @media (max-width: 560px) {
   .filter-label { min-width: 100%; }
 }
+
+/* Link secondario alla scheda dell'aggregatore: presente ma discreto, non deve
+   competere con il titolo, che porta al sito ufficiale. */
+.listing-link { color: var(--muted); text-decoration: underline dotted; }
+.listing-link:hover { color: var(--accent); }

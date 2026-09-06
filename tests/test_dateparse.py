@@ -59,3 +59,19 @@ def test_early_bird_registration_non_viene_contata_due_volte():
 
 def test_testo_senza_date_non_produce_scadenze():
     assert extract_deadlines("Registration will open soon") == {}
+
+
+@pytest.mark.parametrize(
+    "text,expected",
+    [
+        # Formato di WikiCFP: l'anno compare su entrambi i lati. Senza questo
+        # pattern ogni conferenza pluri-giorno perdeva la data di fine e sul
+        # sito appariva come un evento di un giorno solo.
+        ("Aug 7, 2026 - Aug 9, 2026", (date(2026, 8, 7), date(2026, 8, 9))),
+        ("7 Aug 2026 - 9 Aug 2026", (date(2026, 8, 7), date(2026, 8, 9))),
+        ("Sep 7, 2026 - Sep 7, 2026", (date(2026, 9, 7), date(2026, 9, 7))),
+        ("Dec 30, 2026 - Jan 2, 2027", (date(2026, 12, 30), date(2027, 1, 2))),
+    ],
+)
+def test_intervalli_con_anno_su_entrambi_i_lati(text, expected):
+    assert parse_range(text) == expected

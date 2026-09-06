@@ -49,7 +49,7 @@ def cmd_collect(args) -> int:
     before = len(store.events)
 
     fetcher = Fetcher(offline=args.offline, base_dir=args.root)
-    diff, results = run_collect(registry_path, store, fetcher, today)
+    diff, results, (links_ok, links_tried) = run_collect(registry_path, store, fetcher, today)
 
     pruned = store.prune_past(today)
     store.save(today)
@@ -57,6 +57,8 @@ def cmd_collect(args) -> int:
 
     print(f"eventi: {before} → {len(store.events)} (nuovi {len(diff.new)}, "
           f"aggiornati {len(diff.updated)}, rimossi {pruned})")
+    if links_tried:
+        print(f"link ufficiali risolti: {links_ok} su {links_tried} schede aperte")
     for result in results:
         state = "OK " if result.ok else "ERR"
         note = result.skipped or result.warning or result.error

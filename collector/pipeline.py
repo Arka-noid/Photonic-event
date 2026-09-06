@@ -7,11 +7,16 @@ from pathlib import Path
 
 import yaml
 
+from .links import resolve_official_url
 from .sources import aideadlines, html, ics, llm, rss, watchlist
 from .sources.base import Fetcher, SourceResult, run_source
 
 #: Quanto passato recente accettare in ingresso (giorni).
 PAST_TOLERANCE_DAYS = 30
+
+#: Tetto di risoluzioni per run. Ogni risoluzione è una richiesta HTTP in più,
+#: ma si tenta una volta sola per evento: a regime ne restano pochissime.
+MAX_LINK_RESOLUTIONS = 40
 
 HANDLERS = {
     "ics": ics.handler,
@@ -41,8 +46,40 @@ def run_all(entries: list[dict], fetcher: Fetcher) -> list[SourceResult]:
     return results
 
 
+def resolve_links(store, fetcher: Fetcher, limit: int = MAX_LINK_RESOLUTIONS) -> tuple[int, int]:
+    """Sostituisce il link della scheda con quello della conferenza, dove riesce.
+
+    Gira DOPO il merge: solo lì si sa quali eventi sono davvero nuovi. Ogni
+    evento viene tentato una volta sola — anche se il tentativo fallisce — così
+    le richieste non si ripetono a ogni raccolta.
+
+    Ritorna (risolti, tentati).
+    """
+    pending = [
+        e for e in store.events.values()
+        if e.listing_url and not e.link_resolved
+    ][:limit]
+
+    resolved = 0
+    for event in pending:
+        event.link_resolved = True          # tentato: non si riprova comunque vada
+        try:
+            fetched = fetcher.get(event.listing_url)
+            if not fetched.ok:
+                continue
+            official = resolve_official_url(fetched.body, event.listing_url)
+        except Exception:                    # una scheda illeggibile non ferma le altre
+            continue
+        if official:
+            event.url = official
+            resolved += 1
+    return resolved, len(pending)
+
+
 def collect(registry_path, store, fetcher: Fetcher, today: date):
-    """Esegue tutte le fonti e riversa gli eventi nello store. Ritorna (diff, esiti)."""
+    """Esegue le fonti, riversa gli eventi, risolve i link delle schede.
+
+    Ritorna (diff, esiti, (link_risolti, link_tentati))."""
     entries = load_registry(registry_path)
     results = run_all(entries, fetcher)
     events = [e for result in results for e in result.events]
@@ -54,4 +91,6 @@ def collect(registry_path, store, fetcher: Fetcher, today: date):
     # informazioni entra per prima e le successive la arricchiscono.
     events.sort(key=lambda e: (-e.score, e.title.lower()))
     diff = store.upsert_all(events, today)
-    return diff, results
+    # In modalità offline non si tocca la rete: le fixture non hanno schede da aprire.
+    links = (0, 0) if fetcher.offline else resolve_links(store, fetcher)
+    return diff, results, links

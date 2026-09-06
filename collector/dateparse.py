@@ -50,6 +50,18 @@ _RANGE_CROSS_MONTH = re.compile(
     rf"\.?,?\s+(?P<year>\d{{4}})\b",
     re.I,
 )
+# Aug 7, 2026 - Aug 9, 2026  /  7 Aug 2026 - 9 Aug 2026
+# È il formato di WikiCFP: l'anno compare su ENTRAMBI i lati, quindi
+# _RANGE_CROSS_MONTH — che lo pretende solo in coda — non lo riconosce, e senza
+# questo pattern ogni conferenza pluri-giorno perdeva la data di fine.
+_RANGE_FULL_BOTH_SIDES = re.compile(
+    rf"\b(?:(?P<d1>\d{{1,2}})\s+(?P<m1>{_MONTH_RE})|(?P<m1b>{_MONTH_RE})\.?\s+(?P<d1b>\d{{1,2}}))"
+    rf"\.?,?\s+(?P<y1>\d{{4}})"
+    rf"\s*(?:{_DASH})\s*"
+    rf"(?:(?P<d2>\d{{1,2}})\s+(?P<m2>{_MONTH_RE})|(?P<m2b>{_MONTH_RE})\.?\s+(?P<d2b>\d{{1,2}}))"
+    rf"\.?,?\s+(?P<y2>\d{{4}})\b",
+    re.I,
+)
 # 10 May 2026  /  May 10, 2026
 _SINGLE_DAY_FIRST = re.compile(
     rf"\b(?P<day>\d{{1,2}})\s+(?P<month>{_MONTH_RE})\.?,?\s+(?P<year>\d{{4}})\b", re.I
@@ -87,6 +99,19 @@ def parse_range(text: str | None) -> tuple[date | None, date | None]:
         end = _make(second["year"], second["month"], second["day"]) if second else None
         if start:
             return start, (end if end and end >= start else None)
+
+    # Prima dei pattern con anno singolo: qui l'anno c'è su entrambi i lati e
+    # può anche cambiare (Dec 30, 2026 - Jan 2, 2027).
+    match = _RANGE_FULL_BOTH_SIDES.search(text)
+    if match:
+        m1 = _month_num(match["m1"] or match["m1b"])
+        m2 = _month_num(match["m2"] or match["m2b"])
+        start = _make(match["y1"], m1, match["d1"] or match["d1b"])
+        end = _make(match["y2"], m2, match["d2"] or match["d2b"])
+        if start and end and end >= start:
+            return start, end
+        if start:
+            return start, None
 
     match = _RANGE_CROSS_MONTH.search(text)
     if match:

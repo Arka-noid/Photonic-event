@@ -112,7 +112,15 @@ class Event:
     """Un evento normalizzato, così come finisce in data/events.json."""
 
     title: str
+    #: Il miglior link noto: il sito ufficiale quando lo si è risolto, altrimenti
+    #: la scheda su cui l'evento è stato trovato.
     url: str = ""
+    #: La scheda di origine (es. WikiCFP). Conservata anche dopo la risoluzione,
+    #: perché spesso contiene scadenze e dettagli che il sito ufficiale non ha.
+    listing_url: str = ""
+    #: La risoluzione è stata tentata: si prova una volta sola per evento, anche
+    #: quando fallisce, per non ripetere la stessa richiesta a ogni run.
+    link_resolved: bool = False
     kind: str = "conference"
     topics: list[str] = field(default_factory=list)
     start: date | None = None
@@ -180,6 +188,8 @@ class Event:
             "id": self.id,
             "title": self.title,
             "url": self.url,
+            "listing_url": self.listing_url,
+            "link_resolved": self.link_resolved,
             "kind": self.kind,
             "topics": sorted(set(self.topics)),
             "start": iso(self.start),

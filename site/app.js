@@ -137,6 +137,16 @@
     const place = event.location || REGION_LABELS[event.region];
     if (place) meta.append(el("span", null, place));
     meta.append(el("span", null, KIND_LABELS[event.kind] || event.kind));
+    // La scheda dell'aggregatore resta raggiungibile: spesso riporta scadenze e
+    // dettagli che il sito ufficiale non espone. Compare solo quando il titolo
+    // punta già altrove, altrimenti sarebbe lo stesso link due volte.
+    if (event.listing_url && event.listing_url !== event.url) {
+      const listing = el("a", "listing-link", "scheda CFP");
+      listing.href = event.listing_url;
+      listing.rel = "noopener noreferrer";
+      listing.target = "_blank";
+      meta.append(listing);
+    }
     card.append(meta);
 
     if (event.description) card.append(el("p", "desc", event.description));

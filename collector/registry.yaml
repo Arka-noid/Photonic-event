@@ -37,6 +37,7 @@
   url: http://www.wikicfp.com/cfp/rss?cat=photonics
   fixture: tests/fixtures/sample_rss.xml
   topics_default: [photonics]
+  is_listing: true       # il link dell\'item è la scheda, non la conferenza
   enabled: true
   verified: false
 
@@ -45,6 +46,7 @@
   type: rss
   url: http://www.wikicfp.com/cfp/rss?cat=optics
   topics_default: [photonics]
+  is_listing: true       # il link dell\'item è la scheda, non la conferenza
   enabled: true
   verified: false
 
@@ -53,6 +55,7 @@
   type: rss
   url: http://www.wikicfp.com/cfp/rss?cat=machine%20learning
   topics_default: [ml]
+  is_listing: true       # il link dell\'item è la scheda, non la conferenza
   enabled: true
   verified: false
 
@@ -61,6 +64,7 @@
   type: rss
   url: http://www.wikicfp.com/cfp/rss?cat=neural%20networks
   topics_default: [ml]
+  is_listing: true       # il link dell\'item è la scheda, non la conferenza
   enabled: true
   verified: false
 

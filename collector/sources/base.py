@@ -176,6 +176,7 @@ def run_source(
 def make_event(
     title: str,
     url: str = "",
+    listing_url: str = "",
     start=None,
     end=None,
     location: str | None = None,
@@ -207,6 +208,7 @@ def make_event(
     return Event(
         title=title,
         url=url or "",
+        listing_url=listing_url or "",
         kind=kind or detect_kind(title, description),
         topics=sorted(set((topics or []) + scored["topics"])),
         start=start,

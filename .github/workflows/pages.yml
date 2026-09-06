@@ -2,7 +2,7 @@ name: Pubblica il sito
 
 on:
   push:
-    branches: [main]
+    branches: [main, "claude/photonics-ai-events-app-6yi1b7"]
     paths: ["site/**", "data/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 

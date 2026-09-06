@@ -175,3 +175,22 @@ def test_mesi_trattati_come_circolari():
     assert _months_apart(12, 1) == 1      # dicembre e gennaio distano un mese
     assert _months_apart(1, 4) == 3
     assert _months_apart(6, 6) == 0
+
+
+def test_le_scadenze_si_filtrano_anche_quando_la_data_in_pagina_e_rifiutata():
+    """Regressione: ICML conservava l'iscrizione del 2026 perché il filtro sulle
+    scadenze riceveva la data trovata in pagina, che era stata scartata, quindi
+    None — e con None lasciava passare tutto. Va confrontata la data *attesa*."""
+    import yaml
+
+    from collector.sources.watchlist import build
+
+    items = [{"name": "ICML", "url": "https://icml.test/", "typical_month": 7,
+              "topics": ["ml"], "fixture": "tests/fixtures/icml_page.html"}]
+    fetcher = Fetcher(offline=True, base_dir=".")
+    events = build(items, {"id": "watchlist", "enrich": True}, fetcher, today=date(2026, 9, 6))
+
+    assert len(events) == 1
+    evento = events[0]
+    assert evento.start == date(2027, 7, 1) and evento.confidence == "unconfirmed"
+    assert evento.deadlines == {}, "la scadenza dell'edizione precedente va scartata"

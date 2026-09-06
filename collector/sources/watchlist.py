@@ -71,6 +71,9 @@ def _plausible_deadlines(found: dict, start: date | None) -> dict:
 def _enrich(text: str, expected_year: int, expected_month: int | None) -> tuple[date | None, date | None, dict]:
     """Cerca date confermate nell'intestazione della pagina ufficiale.
 
+    Le scadenze sono restituite grezze: filtrarle richiede la data definitiva
+    dell'evento, che solo il chiamante conosce.
+
     Due guardie, entrambe necessarie: l'anno deve essere quello dell'edizione
     attesa **e** il mese deve avvicinarsi a quello dichiarato. Con il solo
     controllo sull'anno, la pagina di SPIE Photonics Europe — che pubblicizza
@@ -83,7 +86,7 @@ def _enrich(text: str, expected_year: int, expected_month: int | None) -> tuple[
         start, end = None, None
     if start and expected_month and _months_apart(start.month, expected_month) > MONTH_TOLERANCE:
         start, end = None, None
-    return start, end, _plausible_deadlines(extract_deadlines(text), start)
+    return start, end, extract_deadlines(text)
 
 
 def build(items: list, entry: dict, fetcher: Fetcher, today: date | None = None) -> list:
@@ -109,6 +112,10 @@ def build(items: list, entry: dict, fetcher: Fetcher, today: date | None = None)
                 if found_start:
                     start, end = found_start, found_end
                     confidence, precision = "confirmed", "day"
+                # Il filtro va applicato a `start` definitivo: se la data trovata
+                # in pagina è stata rifiutata, resta valida quella attesa, e le
+                # scadenze vanno comunque confrontate con quella.
+                deadlines = _plausible_deadlines(deadlines, start)
 
         event = make_event(
             title=title,

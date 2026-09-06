@@ -4,6 +4,13 @@ on:
   push:
     branches: [main, "claude/photonics-ai-events-app-6yi1b7"]
     paths: ["site/**", "data/**", ".github/workflows/pages.yml"]
+  # I push fatti dai workflow con il token automatico non innescano altri
+  # workflow (GitHub lo impedisce per evitare loop). Senza questo trigger il
+  # commit dei dati non ripubblicherebbe mai il sito, che resterebbe fermo
+  # all'ultima modifica del codice.
+  workflow_run:
+    workflows: ["Raccolta eventi", "Promemoria scadenze"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:

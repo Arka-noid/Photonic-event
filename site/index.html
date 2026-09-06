@@ -17,11 +17,17 @@
       <h1>Photonic-event</h1>
       <p class="tagline">Conferenze, school e workshop su <strong>fotonica</strong> e <strong>reti neurali</strong></p>
     </div>
-    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambia tema">◐</button>
+    <div class="top-actions">
+      <button id="run-now" class="icon-btn" type="button" aria-label="Cerca nuovi eventi adesso"
+              title="Cerca nuovi eventi adesso">⟳</button>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambia tema">◐</button>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
+  <p id="run-status" class="run-status" role="status" hidden></p>
+
   <section class="controls" aria-label="Filtri">
     <input id="search" type="search" placeholder="Cerca per titolo, luogo, argomento…" aria-label="Cerca">
 
@@ -62,7 +68,37 @@
     non ancora confermate dalla pagina ufficiale.
     <a href="https://github.com/Arka-noid/Photonic-event">Codice e fonti su GitHub</a>.
   </p>
+  <p><button id="forget-token" class="linkish" type="button" hidden>Dimentica il token di aggiornamento</button></p>
 </footer>
+
+<!-- La raccolta gira su GitHub Actions: da una pagina statica la si avvia solo
+     chiamando l'API, che vuole un token. Non esiste un posto sicuro dove
+     nasconderlo in un sito pubblico, quindi lo si chiede all'utente e resta
+     nel suo browser. Chi non lo vuole usa "Apri su GitHub". -->
+<dialog id="token-dialog" class="dialog">
+  <form method="dialog">
+    <h2>Avviare la raccolta da qui</h2>
+    <p class="muted">
+      Serve un token personale GitHub. Resta salvato <strong>solo in questo browser</strong>,
+      non viene inviato a nessuno tranne che a GitHub stesso.
+    </p>
+    <ol class="muted">
+      <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Crea un token fine-grained</a>.</li>
+      <li><em>Repository access</em> → <em>Only select repositories</em> → <strong>Photonic-event</strong>.</li>
+      <li><em>Repository permissions</em> → <strong>Actions: Read and write</strong>. Nient'altro.</li>
+      <li>Scadenza breve: quando scade, il pulsante lo richiede di nuovo.</li>
+    </ol>
+    <label class="token-label" for="token-input">Token</label>
+    <input id="token-input" type="password" required autocomplete="off"
+           spellcheck="false" placeholder="github_pat_…">
+    <div class="dialog-actions">
+      <button value="cancel" class="btn ghost" formnovalidate>Annulla</button>
+      <a class="btn ghost" href="https://github.com/Arka-noid/Photonic-event/actions/workflows/collect.yml"
+         target="_blank" rel="noopener noreferrer">Apri su GitHub</a>
+      <button value="save" class="btn">Salva e avvia</button>
+    </div>
+  </form>
+</dialog>
 
 <script src="./app.js"></script>
 </body>

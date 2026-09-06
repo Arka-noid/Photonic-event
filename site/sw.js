@@ -18,6 +18,10 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  // Solo le risorse del sito: le chiamate all'API di GitHub non vanno né
+  // servite dalla cache né messe in cache, o lo stato di un run resterebbe
+  // congelato al primo intoppo di rete.
+  if (new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
     fetch(event.request)
       .then((response) => {

@@ -6,7 +6,8 @@ neurali** (photonic computing, neuromorphic photonics, optical AI), tiene d'occh
 installabile sul telefono.
 
 - 🌐 Sito: <https://arka-noid.github.io/Photonic-event/>
-- 🤖 Raccolta: **lunedì e giovedì**; promemoria scadenze **ogni giorno**
+- 🤖 Raccolta **ogni giorno** alle 06:15 UTC; promemoria scadenze alle 07:00 UTC
+- ⟳ Il pulsante in cima al sito lancia una raccolta subito, senza aspettare il turno
 - 💬 Notifiche: Telegram
 
 ---
@@ -69,6 +70,30 @@ Verifica con: `Actions` → **Raccolta eventi** → `Run workflow` → `mode: co
 
 `Settings` → `Pages` → **Source: GitHub Actions**. Il workflow *Pubblica il sito* fa il
 resto a ogni aggiornamento dei dati.
+
+### 4. Il pulsante ⟳ del sito (facoltativo)
+
+Il pulsante in alto a destra avvia la raccolta senza passare da GitHub: mostra
+l'avanzamento e ricarica i dati appena il sito è ripubblicato, in tutto un paio di minuti.
+
+Il sito è statico, quindi l'unico modo di far partire un workflow da lì è chiamare l'API
+di GitHub, che vuole un token. In una pagina pubblica non esiste un posto sicuro dove
+metterlo, perciò lo si chiede al proprietario alla prima pressione e resta **solo nel
+browser di quel dispositivo** (`localStorage`). Da usare un token
+[fine-grained](https://github.com/settings/personal-access-tokens/new) ristretto:
+
+- *Repository access* → **Only select repositories** → `Photonic-event`
+- *Repository permissions* → **Actions: Read and write**, nient'altro
+- scadenza breve: quando scade, il pulsante lo richiede
+
+Due avvertenze. Il token vale per l'intera origine `arka-noid.github.io`, condivisa da
+tutte le GitHub Pages dello stesso account: tienilo ristretto come sopra e usa
+*Dimentica il token* (in fondo alla pagina) su un dispositivo che non controlli più.
+E chi non vuole token non perde nulla: il pulsante offre *Apri su GitHub*, dove
+`Run workflow` fa esattamente la stessa cosa.
+
+Una raccolta lanciata due volte nello stesso giorno di solito riporta "nessun evento
+nuovo": è l'esito giusto, non un errore.
 
 ---
 

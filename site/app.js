@@ -318,6 +318,190 @@
   // fallire la pagina per una preferenza di tema.
   function safeGet(key) { try { return localStorage.getItem(key); } catch { return null; } }
   function safeSet(key, value) { try { localStorage.setItem(key, value); } catch { /* ignorato */ } }
+  function safeRemove(key) { try { localStorage.removeItem(key); } catch { /* ignorato */ } }
+
+  /* -- avvio manuale della raccolta -----------------------------------------
+     Il sito è statico: da qui la raccolta si fa partire solo chiedendo a GitHub
+     di eseguire il workflow, e l'API vuole un token. Un sito pubblico non ha
+     dove custodirlo, quindi si usa quello dell'utente, tenuto in localStorage
+     su questo dispositivo e limitato al solo permesso Actions su questo
+     repository. Senza token il pulsante resta utile: rimanda alla pagina
+     Actions, dove il pulsante "Run workflow" fa la stessa cosa. -- */
+  const REPO = "Arka-noid/Photonic-event";
+  const API = `https://api.github.com/repos/${REPO}`;
+  const WORKFLOW = "collect.yml";
+  const PAGES_WORKFLOW = "pages.yml";
+  const TOKEN_KEY = "github-token";
+
+  const POLL_MS = 5000;
+  const WAIT_RUN_MS = 90000;        // comparsa del run dopo il dispatch
+  const WAIT_COLLECT_MS = 900000;   // durata massima della raccolta
+  const WAIT_PAGES_MS = 60000;      // comparsa della pubblicazione dopo la raccolta
+
+  const runner = { busy: false, defaultBranch: null };
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  function status(text, kind) {
+    const node = document.getElementById("run-status");
+    node.hidden = !text;
+    node.textContent = text || "";
+    node.className = "run-status" + (kind ? ` ${kind}` : "");
+  }
+
+  function setBusy(busy) {
+    runner.busy = busy;
+    const button = document.getElementById("run-now");
+    button.disabled = busy;
+    button.classList.toggle("busy", busy);
+  }
+
+  async function api(path, options = {}) {
+    const response = await fetch(API + path, {
+      ...options,
+      headers: {
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        Authorization: `Bearer ${safeGet(TOKEN_KEY)}`,
+        ...(options.body ? { "Content-Type": "application/json" } : {}),
+      },
+    });
+    if (!response.ok) {
+      const error = new Error(`GitHub ha risposto ${response.status}`);
+      error.status = response.status;
+      throw error;
+    }
+    return response.status === 204 ? null : response.json();
+  }
+
+  async function latestRunId(workflow, event) {
+    const query = `/actions/workflows/${workflow}/runs?per_page=1` + (event ? `&event=${event}` : "");
+    const run = ((await api(query)).workflow_runs || [])[0];
+    return run ? run.id : 0;
+  }
+
+  // Il dispatch non restituisce l'id del run che ha creato. Gli id crescono nel
+  // tempo, quindi "il più recente ha un id maggiore di prima" lo identifica
+  // senza dipendere dall'orologio del telefono.
+  async function waitForNewRun(workflow, event, previousId, timeout, label) {
+    const deadline = Date.now() + timeout;
+    for (;;) {
+      const query = `/actions/workflows/${workflow}/runs?per_page=1` + (event ? `&event=${event}` : "");
+      const run = ((await api(query)).workflow_runs || [])[0];
+      if (run && run.id > previousId) return run;
+      if (Date.now() > deadline) return null;
+      status(`${label}…`);
+      await sleep(POLL_MS);
+    }
+  }
+
+  async function waitForCompletion(run, timeout, label) {
+    const startedAt = Date.now();
+    let current = run;
+    while (current.status !== "completed") {
+      if (Date.now() - startedAt > timeout) throw new Error(`${label}: sta durando troppo, guarda su GitHub.`);
+      status(`${label} (${Math.round((Date.now() - startedAt) / 1000)}s)…`);
+      await sleep(POLL_MS);
+      current = await api(`/actions/runs/${current.id}`);
+    }
+    return current;
+  }
+
+  async function collectNow() {
+    if (runner.busy) return;
+    if (navigator.onLine === false) { status("Serve una connessione per avviare la raccolta.", "error"); return; }
+    setBusy(true);
+    try {
+      status("Avvio la raccolta…");
+      if (!runner.defaultBranch) runner.defaultBranch = (await api("")).default_branch;
+
+      const beforeCollect = await latestRunId(WORKFLOW, "workflow_dispatch");
+      const beforePages = await latestRunId(PAGES_WORKFLOW);
+
+      await api(`/actions/workflows/${WORKFLOW}/dispatches`, {
+        method: "POST",
+        body: JSON.stringify({ ref: runner.defaultBranch, inputs: { mode: "collect" } }),
+      });
+
+      const started = await waitForNewRun(WORKFLOW, "workflow_dispatch", beforeCollect, WAIT_RUN_MS, "In coda su GitHub");
+      if (!started) throw new Error("La raccolta non è comparsa fra le esecuzioni: controlla su GitHub.");
+
+      const collect = await waitForCompletion(started, WAIT_COLLECT_MS, "Raccolta in corso");
+      if (collect.conclusion !== "success") throw new Error(`La raccolta è fallita (${collect.conclusion}): guarda il log su GitHub.`);
+
+      // La pubblicazione parte solo se la raccolta ha davvero cambiato i dati:
+      // se non compare entro un minuto, non c'era nulla da pubblicare.
+      const pages = await waitForNewRun(PAGES_WORKFLOW, null, beforePages, WAIT_PAGES_MS, "Raccolta finita, pubblico il sito");
+      if (pages) {
+        await waitForCompletion(pages, WAIT_PAGES_MS * 5, "Pubblicazione in corso");
+        await sleep(3000);   // il CDN di Pages serve la nuova copia un istante dopo
+      }
+
+      const before = new Set(state.events.map((e) => e.id));
+      await load();
+      update();
+      renderHealth();
+      const added = state.events.filter((e) => !before.has(e.id)).length;
+      status(added
+        ? `Aggiornato: ${added} ${added === 1 ? "evento nuovo" : "eventi nuovi"}.`
+        : "Raccolta completata: nessun evento nuovo.", "done");
+    } catch (error) {
+      if (error.status === 401) {
+        safeRemove(TOKEN_KEY);
+        status("Token rifiutato o scaduto: reinseriscilo.", "error");
+        openTokenDialog();
+      } else if (error.status === 403) {
+        status("Il token non ha il permesso Actions: Read and write su questo repository.", "error");
+      } else if (error.status === 404) {
+        status("Repository o workflow non raggiungibili con questo token.", "error");
+      } else {
+        status(error.message || "Avvio fallito.", "error");
+      }
+      console.error("raccolta manuale fallita", error);
+    } finally {
+      setBusy(false);
+      showForgetToken();
+    }
+  }
+
+  function openTokenDialog() {
+    const dialog = document.getElementById("token-dialog");
+    if (typeof dialog.showModal !== "function") {   // browser senza <dialog>
+      const typed = window.prompt("Token GitHub (permesso Actions su Photonic-event):");
+      if (typed) { safeSet(TOKEN_KEY, typed.trim()); collectNow(); }
+      return;
+    }
+    document.getElementById("token-input").value = "";
+    dialog.showModal();
+  }
+
+  function showForgetToken() {
+    document.getElementById("forget-token").hidden = !safeGet(TOKEN_KEY);
+  }
+
+  function initRunner() {
+    document.getElementById("run-now").addEventListener("click", () => {
+      if (safeGet(TOKEN_KEY)) collectNow(); else openTokenDialog();
+    });
+
+    const dialog = document.getElementById("token-dialog");
+    dialog.addEventListener("close", () => {
+      const typed = document.getElementById("token-input").value.trim();
+      document.getElementById("token-input").value = "";
+      if (dialog.returnValue !== "save" || !typed) return;
+      safeSet(TOKEN_KEY, typed);
+      showForgetToken();
+      collectNow();
+    });
+
+    document.getElementById("forget-token").addEventListener("click", () => {
+      safeRemove(TOKEN_KEY);
+      showForgetToken();
+      status("Token rimosso da questo browser.", "done");
+    });
+
+    showForgetToken();
+  }
 
   /* -- avvio -- */
   async function load() {
@@ -337,6 +521,7 @@
     update();
   });
   initTheme();
+  initRunner();
 
   load().then(() => { update(); renderHealth(); }).catch((error) => {
     document.getElementById("results").append(

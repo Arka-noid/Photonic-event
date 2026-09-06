@@ -132,3 +132,46 @@ def test_eventi_gia_conclusi_non_entrano_come_novita(tmp_path):
         assert [e.title for e in diff.new] == ["Photonics Next 2027"]
     finally:
         del pipeline.HANDLERS["fake"]
+
+
+# -- guardie sull'arricchimento della watchlist ------------------------------
+# Entrambi questi casi si sono verificati davvero nella prima raccolta reale.
+
+def test_le_date_di_un_altro_evento_sulla_stessa_pagina_non_confermano():
+    from collector.sources.watchlist import _enrich
+
+    # La pagina di SPIE Photonics Europe (aprile) pubblicizza Photonics West
+    # (gennaio) nell'intestazione. Col solo controllo sull'anno, l'evento di
+    # aprile risultava tenuto a fine gennaio e per giunta "confermato".
+    pagina = "SPIE Photonics West 2027, 30 January - 4 February 2027."
+    assert _enrich(pagina, 2027, 4)[:2] == (None, None)      # atteso aprile → rifiutato
+    assert _enrich(pagina, 2027, 1)[:2] == (date(2027, 1, 30), date(2027, 2, 4))
+
+
+def test_uno_slittamento_di_poche_settimane_resta_accettato():
+    from collector.sources.watchlist import _enrich
+
+    # Una conferenza può spostarsi di qualche settimana: la tolleranza non deve
+    # essere così stretta da rifiutare l'edizione giusta.
+    pagina = "The conference takes place 2 - 6 May 2027 in Munich."
+    assert _enrich(pagina, 2027, 6)[0] == date(2027, 5, 2)
+
+
+def test_scadenze_di_unaltra_edizione_vengono_scartate():
+    from collector.sources.watchlist import _plausible_deadlines
+
+    # icml.cc mostrava le scadenze del 2026 mentre annunciava il 2027: senza
+    # filtro, l'iscrizione a ICML 2027 risultava chiusa 13 mesi prima.
+    inizio = date(2027, 7, 1)
+    assert _plausible_deadlines({"registration": date(2026, 5, 24)}, inizio) == {}
+    assert _plausible_deadlines({"abstract": date(2027, 4, 1)}, inizio) == {"abstract": date(2027, 4, 1)}
+    # né una scadenza successiva all'evento
+    assert _plausible_deadlines({"paper": date(2027, 9, 1)}, inizio) == {}
+
+
+def test_mesi_trattati_come_circolari():
+    from collector.sources.watchlist import _months_apart
+
+    assert _months_apart(12, 1) == 1      # dicembre e gennaio distano un mese
+    assert _months_apart(1, 4) == 3
+    assert _months_apart(6, 6) == 0

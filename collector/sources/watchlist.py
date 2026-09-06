@@ -39,18 +39,51 @@ def _expected_edition(item: dict, today: date) -> tuple[date | None, int]:
         return None, year
 
 
-def _enrich(text: str, expected_year: int) -> tuple[date | None, date | None, dict]:
+#: Scarto massimo, in mesi, fra il mese dichiarato nella watchlist e quello
+#: trovato in pagina. Le conferenze slittano di qualche settimana, non di stagione.
+MONTH_TOLERANCE = 2
+#: Una scadenza plausibile non precede l'evento di più di un anno né lo segue.
+DEADLINE_MAX_MONTHS_BEFORE = 12
+
+
+def _months_apart(a: int, b: int) -> int:
+    """Distanza fra due mesi trattando l'anno come circolare (dic e gen distano 1)."""
+    diff = abs(a - b) % 12
+    return min(diff, 12 - diff)
+
+
+def _plausible_deadlines(found: dict, start: date | None) -> dict:
+    """Scarta le scadenze che non possono appartenere a questa edizione.
+
+    Le pagine ufficiali continuano a mostrare le scadenze dell'edizione in corso
+    mentre la prossima è già annunciata: senza questo filtro l'iscrizione a ICML
+    2027 risultava scaduta a maggio 2026, tredici mesi prima dell'evento.
+    """
+    if not start:
+        return found
+    earliest = date(start.year - 1, start.month, 1) if start.month else None
+    return {
+        kind: due for kind, due in found.items()
+        if due <= start and (earliest is None or due >= earliest)
+    }
+
+
+def _enrich(text: str, expected_year: int, expected_month: int | None) -> tuple[date | None, date | None, dict]:
     """Cerca date confermate nell'intestazione della pagina ufficiale.
 
-    Un intervallo vale come conferma solo se cade nell'anno dell'edizione attesa:
-    così l'archivio dell'edizione passata, che spesso resta in pagina, non viene
-    scambiato per la prossima.
+    Due guardie, entrambe necessarie: l'anno deve essere quello dell'edizione
+    attesa **e** il mese deve avvicinarsi a quello dichiarato. Con il solo
+    controllo sull'anno, la pagina di SPIE Photonics Europe — che pubblicizza
+    Photonics West nell'intestazione — faceva risultare l'evento di aprile come
+    tenuto a fine gennaio, per giunta marcato "confermato".
     """
     header = text[:HEADER_CHARS]
     start, end = parse_range(header)
     if start and start.year != expected_year:
         start, end = None, None
-    return start, end, extract_deadlines(text)
+    if start and expected_month and _months_apart(start.month, expected_month) > MONTH_TOLERANCE:
+        start, end = None, None
+    return start, end, _plausible_deadlines(extract_deadlines(text), start)
 
 
 def build(items: list, entry: dict, fetcher: Fetcher, today: date | None = None) -> list:
@@ -70,7 +103,9 @@ def build(items: list, entry: dict, fetcher: Fetcher, today: date | None = None)
                 from bs4 import BeautifulSoup
 
                 text = " ".join(BeautifulSoup(fetched.body, "lxml").get_text(" ", strip=True).split())
-                found_start, found_end, deadlines = _enrich(text, expected_year)
+                found_start, found_end, deadlines = _enrich(
+                    text, expected_year, item.get("typical_month")
+                )
                 if found_start:
                     start, end = found_start, found_end
                     confidence, precision = "confirmed", "day"

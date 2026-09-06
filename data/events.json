@@ -8,14 +8,16 @@
     {
       "id": "6f3971ce027f9ebf",
       "title": "AANN 2026 : IEEE 2026 6th International Conference on Advanced Algorithms and Neural Networks",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=195469&copyownerid=182680",
+      "url": "https://www.aischolar.com/conference/aann2026?invite=wiki",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=195469&copyownerid=182680",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-08-07",
-      "end": null,
-      "location": null,
+      "end": "2026-08-09",
+      "location": "Singapore",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -32,14 +34,16 @@
     {
       "id": "638323a3f34e3540",
       "title": "ICAANN 2026 : 6th International Conference on Advanced Algorithms and Neural Networks",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=194603&copyownerid=13149",
+      "url": "https://www.icaann.net/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=194603&copyownerid=13149",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-08-07",
-      "end": null,
-      "location": null,
+      "end": "2026-08-09",
+      "location": "Qingdao, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -56,15 +60,17 @@
     {
       "id": "0220fcf58bf424d0",
       "title": "AI4Society 2026 : 2026 International Conference on Artificial Intelligence for Society",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=189951&copyownerid=182680",
+      "url": "https://ais.cn/u/EZJbam",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=189951&copyownerid=182680",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml",
         "photonics"
       ],
       "start": "2026-08-14",
-      "end": null,
-      "location": null,
+      "end": "2026-08-16",
+      "location": "Chongqing, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-optics",
@@ -81,14 +87,16 @@
     {
       "id": "e8b559ea6d405330",
       "title": "ICOIP 2026 : 2026 6th International Conference on Optical Imaging and Image Processing",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200016&copyownerid=163220",
+      "url": "https://ais.cn/u/Bfu6Fb",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200016&copyownerid=163220",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "photonics"
       ],
       "start": "2026-08-28",
-      "end": null,
-      "location": null,
+      "end": "2026-08-30",
+      "location": "Nanjing, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-optics",
@@ -106,6 +114,8 @@
       "id": "458aab18e0cda702",
       "title": "ECOC (European Conference on Optical Communication) 2026",
       "url": "https://www.ecoc.org/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -130,6 +140,8 @@
       "id": "39798395b8432d02",
       "title": "EOSAM (European Optical Society Annual Meeting) 2026",
       "url": "https://www.myeos.org/events/eosam",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -153,14 +165,16 @@
     {
       "id": "a93ae45dbb740676",
       "title": "ICOSM 2026 : 2026 8th International Conference on Optoelectronic Science and Materials",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200321&copyownerid=182680",
+      "url": "https://ais.cn/u/zM36Nf",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200321&copyownerid=182680",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "photonics"
       ],
       "start": "2026-09-04",
-      "end": null,
-      "location": null,
+      "end": "2026-09-06",
+      "location": "Jinan, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-optics",
@@ -177,14 +191,16 @@
     {
       "id": "62b8f4983bf3d862",
       "title": "DLmNH 2026 : 4th Workshop on Deep Learning meets Neuromorphic Hardware @ ECML PKDD 2026",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=195223&copyownerid=198662",
+      "url": "http://www.todordimitrov.de/cfp-app/index.html",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=195223&copyownerid=198662",
+      "link_resolved": true,
       "kind": "workshop",
       "topics": [
         "ml"
       ],
       "start": "2026-09-07",
-      "end": null,
-      "location": null,
+      "end": "2026-09-07",
+      "location": "Naples",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -201,14 +217,16 @@
     {
       "id": "386735cf4a6f7d74",
       "title": "BDNNDL 2026 : 2026 3rd Symposium on Big Data, Neural Networks, and Deep Learning",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200335&copyownerid=163220",
+      "url": "https://ais.cn/u/ramEz2",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200335&copyownerid=163220",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-09-11",
-      "end": null,
-      "location": null,
+      "end": "2026-09-13",
+      "location": "Changji, Xinjiang, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -225,14 +243,16 @@
     {
       "id": "ca9352d0f1aa41f7",
       "title": "CVML 2026 : 2026 2nd International Conference on Computer Vision and Machine Learning (CVML 2026)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202689&copyownerid=198704",
+      "url": "https://www.iccvml.com/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202689&copyownerid=198704",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-09-18",
-      "end": null,
-      "location": null,
+      "end": "2026-09-20",
+      "location": "Nanchang, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -250,6 +270,8 @@
       "id": "9ff4ca9bdee3bf5b",
       "title": "IEEE Photonics Conference (IPC) 2026",
       "url": "https://www.photonicssociety.org/conferences/ieee-photonics-conference",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -273,14 +295,16 @@
     {
       "id": "e2b2c96da9e6c7e5",
       "title": "AIAM 2026 : 2026 8th International Conference on Artificial Intelligence and Advanced Manufacturing",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202956&copyownerid=197560",
+      "url": "https://www.icaiam.com/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202956&copyownerid=197560",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-10-29",
-      "end": null,
-      "location": null,
+      "end": "2026-10-31",
+      "location": "Frankfurt, Germany",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -297,14 +321,16 @@
     {
       "id": "6e49768945763cbf",
       "title": "AIAA 2026 : 16th International Conference on Artificial Intelligence, Soft Computing and Applications",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202738&copyownerid=33993",
+      "url": "https://aiaa2026.org/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202738&copyownerid=33993",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-11-27",
-      "end": null,
-      "location": null,
+      "end": "2026-11-28",
+      "location": "Zurich, Switzerland",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -322,6 +348,8 @@
       "id": "d316e4011f72e92a",
       "title": "NeurIPS (Neural Information Processing Systems) 2026",
       "url": "https://neurips.cc/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml"
@@ -347,14 +375,16 @@
     {
       "id": "41a0037285354a02",
       "title": "AI for Chip Design at NeurIPS 2026 : AI for Chip Design Workshop at NeurIPS 2026",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202670&copyownerid=190618",
+      "url": "https://neurips-ai-for-chip-design-2026.github.io/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202670&copyownerid=190618",
+      "link_resolved": true,
       "kind": "workshop",
       "topics": [
         "ml"
       ],
       "start": "2026-12-12",
-      "end": null,
-      "location": null,
+      "end": "2026-12-12",
+      "location": "Paris, France",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -371,14 +401,16 @@
     {
       "id": "cb38f5b4169bf14c",
       "title": "AINMD 2026 : 2026 International Conference on Artificial Intelligence and New Materials Development",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202953&copyownerid=182680",
+      "url": "https://www.aischolar.com/u/YRvauu",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202953&copyownerid=182680",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-12-18",
-      "end": null,
-      "location": null,
+      "end": "2026-12-20",
+      "location": "Kuala Lumpur, Malaysia",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -395,14 +427,16 @@
     {
       "id": "b9e35d2408aac84a",
       "title": "MLTEC 2026 : 7th International Conference on Machine Learning Techniques",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=192175&copyownerid=46167",
+      "url": "https://mltec.org/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=192175&copyownerid=46167",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2026-12-19",
-      "end": null,
-      "location": null,
+      "end": "2026-12-20",
+      "location": "Sydney, Australia",
       "region": "oceania",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -419,14 +453,16 @@
     {
       "id": "24f2f5be90a0a4db",
       "title": "9th AccML 2027 : 9th Workshop on Accelerated Machine Learning (AccML)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202913&copyownerid=200180",
+      "url": "https://accml.dcs.gla.ac.uk/workshop-2027-hipeac.html",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202913&copyownerid=200180",
+      "link_resolved": true,
       "kind": "workshop",
       "topics": [
         "ml"
       ],
       "start": "2027-01-19",
-      "end": null,
-      "location": null,
+      "end": "2027-01-19",
+      "location": "Glasgow, United Kingdom",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -444,6 +480,8 @@
       "id": "e2d6e0c013105de9",
       "title": "SPIE Photonics West 2027",
       "url": "https://spie.org/conferences-and-exhibitions/photonics-west",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "biophotonics",
@@ -468,14 +506,16 @@
     {
       "id": "fb814bd9cf6b889c",
       "title": "PHOTOPTICS 2027 : 15th International Conference on Photonics, Optics and Laser Technology",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200099&copyownerid=45217",
+      "url": "https://photoptics.scitevents.org/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=200099&copyownerid=45217",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "photonics"
       ],
       "start": "2027-02-25",
-      "end": null,
-      "location": null,
+      "end": "2027-02-27",
+      "location": "Valletta, Malta",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-photonics,wikicfp-optics",
@@ -493,6 +533,8 @@
       "id": "fc2f1a7a5a963b42",
       "title": "OFC (Optical Fiber Communication Conference) 2027",
       "url": "https://www.ofcconference.org/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -517,6 +559,8 @@
       "id": "c364103aaf72e6d0",
       "title": "SPIE Photonics Europe 2027",
       "url": "https://spie.org/conferences-and-exhibitions/photonics-europe",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml",
@@ -545,6 +589,8 @@
       "id": "73dd744f25fa8806",
       "title": "ECIO (European Conference on Integrated Optics) 2027",
       "url": "https://www.ecio-conference.org/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -569,6 +615,8 @@
       "id": "da3e27ee05471c86",
       "title": "ICLR (International Conference on Learning Representations) 2027",
       "url": "https://iclr.cc/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml"
@@ -593,6 +641,8 @@
       "id": "726a7fc6a5084ade",
       "title": "CLEO (Conference on Lasers and Electro-Optics) 2027",
       "url": "https://www.cleoconference.org/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml",
@@ -618,14 +668,16 @@
     {
       "id": "cc97f5cc6662a791",
       "title": "AIGT--EI 2027 : 2027 International Conference on Artificial Intelligence and Generation Technologies (AIGT 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202618&copyownerid=13881",
+      "url": "https://www.aigt.net/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202618&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-05-14",
-      "end": null,
-      "location": null,
+      "end": "2027-05-16",
+      "location": "Nanjing, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -642,14 +694,16 @@
     {
       "id": "6a6037192be094d5",
       "title": "ICMLT--EI 2027 : 2027 12th International Conference on Machine Learning Technologies (ICMLT 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203039&copyownerid=13881",
+      "url": "http://www.icmlt.org",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203039&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-05-21",
-      "end": null,
-      "location": null,
+      "end": "2027-05-23",
+      "location": "Stockholm, Sweden",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -666,14 +720,16 @@
     {
       "id": "4ba668b3a1792a14",
       "title": "IWANN 2027 : International Work-Conference on Artificial Neural Networks",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202497&copyownerid=72744",
+      "url": "https://iwann.uma.es/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202497&copyownerid=72744",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-06-14",
-      "end": null,
-      "location": null,
+      "end": "2027-06-16",
+      "location": "Tenerife, Spain",
       "region": "europe",
       "deadlines": {},
       "source": "wikicfp-neural",
@@ -690,14 +746,16 @@
     {
       "id": "accebb7c2c6fa097",
       "title": "IEEE SEAI 2027 : IEEE--2027 7th International Conference on Software Engineering and Artificial Intelligence (SEAI 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202773&copyownerid=13881",
+      "url": "http://www.seai.org",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202773&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-06-18",
-      "end": null,
-      "location": null,
+      "end": "2027-06-20",
+      "location": "Quanzhou, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -715,6 +773,8 @@
       "id": "14b56f7bd3717684",
       "title": "CVPR (Computer Vision and Pattern Recognition) 2027",
       "url": "https://cvpr.thecvf.com/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml"
@@ -739,6 +799,8 @@
       "id": "d9344ff93a826e12",
       "title": "CLEO Europe / EQEC 2027",
       "url": "https://www.cleoeurope.org/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics",
@@ -764,6 +826,8 @@
       "id": "313d51b56cf832f1",
       "title": "ICONS (International Conference on Neuromorphic Systems) 2027",
       "url": "https://icons.ornl.gov/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml",
@@ -789,6 +853,8 @@
       "id": "057bcabe636a8976",
       "title": "ICML (International Conference on Machine Learning) 2027",
       "url": "https://icml.cc/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "ml"
@@ -813,6 +879,8 @@
       "id": "a679194969f4dbf0",
       "title": "Les Houches — Physics School 2027",
       "url": "https://houches-school-physics.com/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "school",
       "topics": [
         "ml",
@@ -838,6 +906,8 @@
       "id": "140cf4ea3b092ce6",
       "title": "Optica Advanced Photonics Congress 2027",
       "url": "https://www.optica.org/events/topical_meetings/advanced_photonics_congress/",
+      "listing_url": "",
+      "link_resolved": false,
       "kind": "conference",
       "topics": [
         "photonics"
@@ -861,14 +931,16 @@
     {
       "id": "c3ed45dfc9c51e28",
       "title": "MLMI 2027 : 2027 The 10th International Conference on Machine Learning and Machine Intelligence (MLMI 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202619&copyownerid=13881",
+      "url": "https://www.mlmi.net/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202619&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-07-16",
-      "end": null,
-      "location": null,
+      "end": "2027-07-19",
+      "location": "Tokyo, Japan",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -885,14 +957,16 @@
     {
       "id": "080a8f1e62040ae8",
       "title": "ICAIGC 2027 : 2027 IEEE International Conference on Artificial Intelligence and Generated Content (ICAIGC 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203037&copyownerid=13881",
+      "url": "https://icaigc.net/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203037&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-08-14",
-      "end": null,
-      "location": null,
+      "end": "2027-08-16",
+      "location": "Melaka, Malaysia",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -909,14 +983,16 @@
     {
       "id": "f32a18af2c0e14e8",
       "title": "AIIE--EI 2027 : 2027 International Conference on Artificial Intelligence and Intelligent Education (AIIE 2027)",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202896&copyownerid=13881",
+      "url": "http://www.aiie.org",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=202896&copyownerid=13881",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"
       ],
       "start": "2027-10-15",
-      "end": null,
-      "location": null,
+      "end": "2027-10-17",
+      "location": "Guangzhou, China",
       "region": "asia",
       "deadlines": {},
       "source": "wikicfp-ml",
@@ -933,7 +1009,9 @@
     {
       "id": "fe9c80c71ad80492",
       "title": "IJSCAI 2026 : International Journal on Soft Computing, Artificial Intelligence and Applications",
-      "url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=199700&copyownerid=33993",
+      "url": "https://airccse.org/journal/ijscai/index.html",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=199700&copyownerid=33993",
+      "link_resolved": true,
       "kind": "conference",
       "topics": [
         "ml"

@@ -1,6 +1,128 @@
 {
-  "checked_at": null,
-  "ok": 0,
-  "total": 0,
-  "sources": []
+  "checked_at": "2026-09-06",
+  "ok": 9,
+  "total": 11,
+  "sources": [
+    {
+      "id": "watchlist",
+      "name": "Watchlist curata (eventi ricorrenti noti)",
+      "ok": true,
+      "http_status": null,
+      "n_events": 16,
+      "error": "",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "ai-deadlines",
+      "name": "ai-deadlines (conferences.yml)",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 0,
+      "error": "",
+      "warning": "dataset fermo al 2025: nessuna edizione 2026 disponibile; nessun evento estratto (selettore da verificare?)",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "wikicfp-photonics",
+      "name": "WikiCFP — categoria photonics",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 17,
+      "error": "",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "wikicfp-optics",
+      "name": "WikiCFP — categoria optics",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 17,
+      "error": "",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "wikicfp-ml",
+      "name": "WikiCFP — categoria machine learning",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 12,
+      "error": "",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "wikicfp-neural",
+      "name": "WikiCFP — categoria neural networks",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 7,
+      "error": "",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "optica-events",
+      "name": "Optica (ex OSA) — eventi",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 0,
+      "error": "",
+      "warning": "nessun evento estratto (selettore da verificare?)",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "spie-conferences",
+      "name": "SPIE — conferenze ed eventi",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 0,
+      "error": "",
+      "warning": "nessun evento estratto (selettore da verificare?)",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "ieee-photonics",
+      "name": "IEEE Photonics Society — conferenze",
+      "ok": false,
+      "http_status": 404,
+      "n_events": 0,
+      "error": "HTTP 404",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "eos-events",
+      "name": "European Optical Society — eventi",
+      "ok": false,
+      "http_status": null,
+      "n_events": 0,
+      "error": "SSLError: HTTPSConnectionPool(host='www.myeos.org', port=443): Max retries exceeded with url: /events (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.myeos.org'. (_ssl.c:1016)\")))",
+      "warning": "",
+      "skipped": "",
+      "checked_at": "2026-09-06"
+    },
+    {
+      "id": "llm-search",
+      "name": "Ricerca web con Claude (opzionale)",
+      "ok": true,
+      "http_status": null,
+      "n_events": 0,
+      "error": "",
+      "warning": "",
+      "skipped": "ANTHROPIC_API_KEY non impostata: fonte LLM disattivata",
+      "checked_at": "2026-09-06"
+    }
+  ]
 }

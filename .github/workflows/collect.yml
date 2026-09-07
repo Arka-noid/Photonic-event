@@ -2,16 +2,21 @@ name: Raccolta eventi
 
 on:
   schedule:
-    # Ogni giorno alle 06:15 UTC. Il cron di GitHub Actions è sempre in UTC.
+    # Ogni mattina alle 06:15 UTC. Il cron di GitHub Actions è sempre in UTC e
+    # non accetta variabili: questa riga è la frequenza *massima*, non quella
+    # scelta. La cadenza vera sta in data/schedule.yaml — la raccolta la legge
+    # come prima cosa ed esce subito se oggi non è un giorno di aggiornamento,
+    # senza interrogare nessuna fonte.
     #
-    # Giornaliero non costa nulla: le fonti attive sono tutte scraping HTTP e i
-    # minuti di Actions sono gratuiti sui repository pubblici. Il digest resta
-    # comunque silenzioso quando non c'è nulla di nuovo, quindi la frequenza più
-    # alta non si traduce in più notifiche.
+    #   python -m collector.run schedule --set weekly --days lunedì,giovedì
+    #
+    # Partire ogni giorno per poi fermarsi costa qualche secondo di runner (i
+    # minuti di Actions sono gratuiti sui repository pubblici) ed è ciò che
+    # permette di cambiare cadenza senza toccare questo file.
     #
     # Attenzione se un giorno verrà aggiunta ANTHROPIC_API_KEY: la fonte di
-    # ricerca LLM si attiverebbe a ogni raccolta, cioè 7 volte a settimana
-    # invece di 2. È l'unica voce di costo del progetto.
+    # ricerca LLM si attiva a ogni raccolta *effettiva*, quindi è la cadenza
+    # scelta a decidere quanto costa. È l'unica voce di costo del progetto.
     - cron: "15 6 * * *"
   # GitHub registra un workflow solo quando gira la prima volta: finché non è
   # registrato non è avviabile via API. Questo trigger, limitato al file stesso,
@@ -29,6 +34,10 @@ on:
         description: "Non inviare nulla su Telegram"
         type: boolean
         default: false
+      force:
+        description: "Raccogli anche se oggi non è un giorno di aggiornamento"
+        type: boolean
+        default: true
 
 concurrency:
   group: collect
@@ -73,7 +82,10 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           # Assente finché non viene configurata: la fonte LLM si disattiva da sola.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m collector.run collect ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: >-
+          python -m collector.run collect
+          ${{ inputs.dry_run && '--dry-run' || '' }}
+          ${{ inputs.force && '--force' || '' }}
 
       - name: Committa i dati aggiornati
         if: inputs.mode != 'probe'

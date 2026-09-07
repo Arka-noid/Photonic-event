@@ -6,7 +6,8 @@ neurali** (photonic computing, neuromorphic photonics, optical AI), tiene d'occh
 installabile sul telefono.
 
 - 🌐 Sito: <https://arka-noid.github.io/Photonic-event/>
-- 🤖 Raccolta: **lunedì e giovedì**; promemoria scadenze **ogni giorno**
+- 🤖 Raccolta: **con la cadenza che scegli** (di serie ogni giorno); promemoria
+  scadenze **ogni giorno**
 - 💬 Notifiche: Telegram
 
 ---
@@ -14,9 +15,9 @@ installabile sul telefono.
 ## Come funziona
 
 ```
-fonti  ──▶  pertinenza  ──▶  data/events.json  ──┬──▶  digest Telegram (novità)
-(registry)   e regione        (merge + storico)  ├──▶  promemoria scadenze
-                                                 └──▶  sito su GitHub Pages
+cadenza ──▶ fonti  ──▶  pertinenza  ──▶  data/events.json  ──┬──▶  digest Telegram (novità)
+(schedule)  (registry)   e regione        (merge + storico)  ├──▶  promemoria scadenze
+                                                             └──▶  sito su GitHub Pages
 ```
 
 Ogni fonte è dichiarata in [`collector/registry.yaml`](collector/registry.yaml) e gira
@@ -69,6 +70,42 @@ Verifica con: `Actions` → **Raccolta eventi** → `Run workflow` → `mode: co
 
 `Settings` → `Pages` → **Source: GitHub Actions**. Il workflow *Pubblica il sito* fa il
 resto a ogni aggiornamento dei dati.
+
+### 4. Ogni quanto aggiornare (facoltativo)
+
+Di serie il sito si aggiorna **ogni giorno**. La cadenza si cambia in
+[`data/schedule.yaml`](data/schedule.yaml), oppure con un comando:
+
+```bash
+python -m collector.run schedule                                  # com'è messa adesso
+python -m collector.run schedule --set weekly --days lunedì,giovedì
+python -m collector.run schedule --set biweekly --days lunedì     # a settimane alterne
+python -m collector.run schedule --set monthly --day-of-month 1
+```
+
+| `frequency` | Quando aggiorna |
+|---|---|
+| `daily` | ogni giorno |
+| `weekly` | nei giorni elencati in `days` |
+| `biweekly` | negli stessi giorni, ma a settimane alterne |
+| `monthly` | il giorno `day_of_month`; nei mesi più corti scala all'ultimo |
+
+I giorni si scrivono in italiano o in inglese (`lunedì`, `mon`, `Thursday`…).
+
+Il cron di GitHub Actions è scritto dentro il workflow e non accetta variabili: per
+questo la raccolta **parte ogni mattina** e, se oggi non è un giorno di aggiornamento,
+esce subito senza interrogare nessuna fonte. Il risultato è che la cadenza si cambia da
+un file di configurazione invece che modificando il workflow. Un avvio manuale
+(`Run workflow`) raccoglie comunque, salvo togliere la spunta a `force`.
+
+Una configurazione sbagliata **non ferma gli aggiornamenti**: viene segnalata nel log e
+si torna a `daily`. Smettere di aggiornare in silenzio sarebbe il guasto peggiore.
+
+I **promemoria delle scadenze restano giornalieri**: seguono il calendario delle
+conferenze, non la cadenza con cui si guardano le fonti.
+
+La cadenza scelta è scritta anche in fondo al sito, così chi la consulta sa se sta
+guardando una pagina ferma o aggiornata.
 
 ---
 
@@ -158,10 +195,13 @@ Comandi disponibili:
 | `collect` | Raccoglie, aggiorna `data/events.json`, manda il digest |
 | `remind` | Manda i promemoria delle scadenze in soglia oggi |
 | `probe` | Interroga ogni fonte e salva le risposte grezze in `probe-output/` |
+| `schedule` | Mostra o cambia la frequenza di aggiornamento del sito |
 | `test-telegram` | Manda un messaggio di prova per verificare i secrets |
 
 Opzioni utili su tutti: `--dry-run` (stampa invece di inviare), `--offline` (usa le
-fixture, nessuna rete), `--today AAAA-MM-GG` (finge una data, per i test).
+fixture, nessuna rete), `--today AAAA-MM-GG` (finge una data, per i test). In più,
+`collect` accetta `--force` per raccogliere anche in un giorno non previsto dalla
+cadenza.
 
 ---
 
@@ -170,9 +210,12 @@ fixture, nessuna rete), `--today AAAA-MM-GG` (finge una data, per i test).
 ```
 collector/          pipeline: modello dati, pertinenza, date, store, fonti, notifiche
   registry.yaml     elenco dichiarativo delle fonti
+  schedule.py       decide se oggi è un giorno di aggiornamento
 data/
   events.json       stato persistente (committato dai workflow)
   health.json       esito dell'ultima raccolta, fonte per fonte
+  schedule.yaml     ogni quanto e in che giorni aggiornare (modificabile)
+  schedule.json     la stessa cadenza tradotta per il sito (generata)
   watchlist.yaml    eventi ricorrenti curati a mano
 site/               sito statico, nessun build step
 tests/              pytest offline su fixture salvate
@@ -181,5 +224,6 @@ tests/              pytest offline su fixture salvate
 ## Note sul rispetto delle fonti
 
 `User-Agent` identificativo con link al repository, una sola richiesta per fonte per
-run, timeout brevi, nessun crawling ricorsivo. La raccolta gira due volte a settimana:
-gli eventi accademici non cambiano più spesso di così.
+run, timeout brevi, nessun crawling ricorsivo. Gli eventi accademici cambiano di rado:
+se ti basta una raccolta a settimana, `schedule --set weekly` è un favore che fai ai
+siti delle società scientifiche oltre che a te.

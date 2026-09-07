@@ -1,0 +1,22 @@
+# Ogni quanto aggiornare il sito, e in che giorni.
+#
+#   frequency: daily      ogni giorno
+#              weekly     nei giorni elencati in 'days'
+#              biweekly   negli stessi giorni, ma a settimane alterne
+#              monthly    una volta al mese, il giorno 'day_of_month'
+#
+#   days:         giorni della settimana per weekly/biweekly, in italiano o in
+#                 inglese ([lunedì, giovedì], [mon, thu], …)
+#   day_of_month: giorno del mese per monthly; nei mesi più corti scala
+#                 all'ultimo giorno disponibile
+#
+# Il workflow parte comunque ogni mattina: se oggi non è un giorno di
+# aggiornamento esce subito, senza interrogare nessuna fonte. I promemoria delle
+# scadenze restano giornalieri: dipendono dal calendario delle conferenze, non
+# da questa cadenza.
+#
+# Si può modificare a mano oppure con:
+#   python -m collector.run schedule --set weekly --days lunedì,giovedì
+frequency: daily
+days: [lunedì, giovedì]
+day_of_month: 1

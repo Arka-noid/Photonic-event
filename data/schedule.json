@@ -1,0 +1,11 @@
+{
+  "frequency": "daily",
+  "days": [
+    "lunedì",
+    "giovedì"
+  ],
+  "day_of_month": 1,
+  "description": "ogni giorno",
+  "next_runs": [],
+  "warnings": []
+}

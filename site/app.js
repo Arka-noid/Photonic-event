@@ -27,7 +27,7 @@
   const DEADLINE_HORIZON = 60;
 
   const state = {
-    events: [], health: null, generatedAt: null,
+    events: [], health: null, generatedAt: null, schedule: null,
     query: "", topic: null, kind: null, region: null, onlyNew: false, includePast: false,
   };
 
@@ -265,6 +265,21 @@
     }
   }
 
+  /* La cadenza è scelta in data/schedule.yaml e tradotta in JSON per il sito:
+     dirla qui evita la domanda "questa pagina è ferma o è aggiornata?". */
+  function renderSchedule() {
+    const node = document.getElementById("schedule");
+    const schedule = state.schedule;
+    if (!schedule || !schedule.description) { node.textContent = ""; return; }
+    const next = (schedule.next_runs || []).map(parseDate).find((day) => day && day >= today);
+    // Una cadenza scritta male ricade su "ogni giorno": dirlo anche qui, e non
+    // solo nel log di Actions, le dà qualche possibilità di essere corretta.
+    const warnings = (schedule.warnings || []).join(" · ");
+    node.textContent = `Aggiornamento del sito: ${schedule.description}` +
+      (next ? ` · il prossimo il ${formatDay(next)}.` : ".") +
+      (warnings ? ` ⚠️ ${warnings}` : "");
+  }
+
   function renderHealth() {
     const section = document.getElementById("health");
     if (!state.health) { section.hidden = true; return; }
@@ -321,12 +336,16 @@
 
   /* -- avvio -- */
   async function load() {
-    const [events, health] = await Promise.all([
+    // Solo events.json è indispensabile: gli altri due arricchiscono la pagina
+    // ma la loro assenza non deve impedire di vedere gli eventi.
+    const [events, health, schedule] = await Promise.all([
       fetch("./data/events.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : Promise.reject(r.status)),
       fetch("./data/health.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null),
+      fetch("./data/schedule.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null),
     ]);
     state.events = events.events || [];
     state.health = health;
+    state.schedule = schedule;
     state.generatedAt = (events.meta || {}).generated_at || null;
     document.getElementById("generated").textContent =
       state.generatedAt ? `Ultimo aggiornamento dei dati: ${state.generatedAt}.` : "";
@@ -338,7 +357,7 @@
   });
   initTheme();
 
-  load().then(() => { update(); renderHealth(); }).catch((error) => {
+  load().then(() => { update(); renderHealth(); renderSchedule(); }).catch((error) => {
     document.getElementById("results").append(
       el("p", "empty", "Impossibile caricare i dati degli eventi. " +
         "Se stai aprendo il file in locale, usa `python scripts/preview.py`."));

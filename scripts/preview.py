@@ -18,7 +18,7 @@ PORT = 8000
 def main() -> None:
     target = ROOT / "site" / "data"
     target.mkdir(parents=True, exist_ok=True)
-    for name in ("events.json", "health.json"):
+    for name in ("events.json", "health.json", "schedule.json"):
         source = ROOT / "data" / name
         if source.exists():
             shutil.copy2(source, target / name)

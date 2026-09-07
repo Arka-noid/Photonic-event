@@ -4,6 +4,7 @@
     python -m collector.run collect --offline --dry-run
     python -m collector.run remind           promemoria scadenze
     python -m collector.run probe            diagnostica di tutte le fonti
+    python -m collector.run schedule         mostra o cambia la frequenza di aggiornamento
     python -m collector.run test-telegram    verifica la configurazione del bot
 """
 
@@ -19,6 +20,7 @@ from .deadlines import due_reminders, mark_sent
 from .digest import build_digest, build_reminders
 from .notify.telegram import Telegram
 from .pipeline import collect as run_collect, load_registry, run_all
+from .schedule import FREQUENCIES, ScheduleError, load_schedule, save_schedule, write_site_payload
 from .store import Store, write_health
 from .sources.base import Fetcher
 
@@ -42,9 +44,33 @@ def _paths(args) -> tuple[Path, Path, Path]:
     return root / args.registry, root / args.data_dir / "events.json", root / args.data_dir / "health.json"
 
 
+def _schedule_paths(args) -> tuple[Path, Path]:
+    """(configurazione YAML, copia JSON per il sito)."""
+    data_dir = Path(args.root) / args.data_dir
+    return data_dir / "schedule.yaml", data_dir / "schedule.json"
+
+
+def _warn_schedule(schedule) -> None:
+    for warning in schedule.warnings:
+        print(f"ATTENZIONE: {warning}", file=sys.stderr)
+
+
 def cmd_collect(args) -> int:
     registry_path, events_path, health_path = _paths(args)
+    schedule_path, schedule_json = _schedule_paths(args)
     today = _today(args)
+
+    # Il cron di GitHub Actions parte ogni mattina perché non è configurabile da
+    # fuori: la cadenza scelta dall'utente si applica qui.
+    schedule = load_schedule(schedule_path)
+    _warn_schedule(schedule)
+    write_site_payload(schedule_json, schedule, today)
+    if not args.force and not schedule.should_run(today):
+        following = schedule.next_runs(today, 1)
+        print(f"oggi non è un giorno di aggiornamento ({schedule.describe()}): niente raccolta"
+              + (f", il prossimo è il {following[0]}" if following else ""))
+        return 0
+
     store = Store(events_path).load()
     before = len(store.events)
 
@@ -135,6 +161,33 @@ def cmd_probe(args) -> int:
     return 0
 
 
+def cmd_schedule(args) -> int:
+    """Mostra la frequenza di aggiornamento del sito, o la cambia."""
+    schedule_path, schedule_json = _schedule_paths(args)
+    today = _today(args)
+    schedule = load_schedule(schedule_path)
+
+    if args.set or args.days or args.day_of_month is not None:
+        try:
+            schedule = schedule.updated(args.set, args.days, args.day_of_month)
+        except ScheduleError as error:
+            print(f"configurazione rifiutata: {error}", file=sys.stderr)
+            return 2
+        save_schedule(schedule_path, schedule)
+        print(f"scritto {schedule_path}")
+    else:
+        _warn_schedule(schedule)
+
+    # Anche in sola lettura: se la copia per il sito manca o è vecchia, questo
+    # comando è il posto naturale in cui accorgersene.
+    write_site_payload(schedule_json, schedule, today)
+
+    print(f"aggiornamento del sito: {schedule.describe()}")
+    print(f"oggi ({today}) {'è' if schedule.should_run(today) else 'non è'} un giorno di aggiornamento")
+    print("prossimi: " + ", ".join(str(day) for day in schedule.next_runs(today)))
+    return 0
+
+
 def cmd_test_telegram(args) -> int:
     telegram = _telegram(args)
     if not telegram.configured and not args.dry_run:
@@ -167,11 +220,22 @@ def main(argv=None) -> int:
         ("collect", cmd_collect),
         ("remind", cmd_remind),
         ("probe", cmd_probe),
+        ("schedule", cmd_schedule),
         ("test-telegram", cmd_test_telegram),
     ):
         child = sub.add_parser(name)
         _add_common(child)
         child.set_defaults(func=function)
+        if name == "collect":
+            child.add_argument("--force", action="store_true",
+                               help="raccogli anche se oggi non è un giorno di aggiornamento")
+        if name == "schedule":
+            child.add_argument("--set", choices=FREQUENCIES, default=None,
+                               help="nuova frequenza di aggiornamento del sito")
+            child.add_argument("--days", default=None,
+                               help="giorni per weekly/biweekly, separati da virgola (es. lunedì,giovedì)")
+            child.add_argument("--day-of-month", type=int, default=None,
+                               help="giorno del mese per monthly (1-31)")
 
     args = parser.parse_args(argv)
     return args.func(args)

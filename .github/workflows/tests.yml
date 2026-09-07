@@ -19,5 +19,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: pytest -q
       # La raccolta offline gira sulle fixture: verifica l'intera pipeline
-      # (fonti → store → digest) senza toccare la rete.
-      - run: python -m collector.run collect --offline --dry-run --data-dir /tmp/ci-data
+      # (fonti → store → digest) senza toccare la rete. `--force` scavalca la
+      # cadenza configurata: il test deve girare a ogni commit, non solo nei
+      # giorni di aggiornamento.
+      - run: python -m collector.run collect --offline --dry-run --force --data-dir /tmp/ci-data

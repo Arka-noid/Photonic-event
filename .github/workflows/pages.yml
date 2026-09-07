@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir -p _site/data
           cp -r site/* _site/
-          cp data/events.json data/health.json _site/data/ 2>/dev/null || true
+          cp data/events.json data/health.json data/schedule.json _site/data/ 2>/dev/null || true
           ls -la _site _site/data
 
       - uses: actions/configure-pages@v5

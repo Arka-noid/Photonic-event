@@ -8,3 +8,6 @@ probe-output/
 site/data/
 _site/
 .DS_Store
+
+# Preferenze personali Claude Code
+.claude/settings.local.json

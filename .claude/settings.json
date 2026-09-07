@@ -1,5 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "alwaysThinkingEnabled": true,
   "showThinkingSummaries": true,
-  "viewMode": "verbose"
+  "viewMode": "verbose",
+  "defaultView": "transcript",
+  "verbose": true,
+  "showTurnDuration": true
 }

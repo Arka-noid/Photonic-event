@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-09",
+  "checked_at": "2026-09-10",
   "ok": 9,
   "total": 11,
   "sources": [
@@ -12,7 +12,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "ai-deadlines",
@@ -23,7 +23,7 @@
       "error": "",
       "warning": "dataset fermo al 2025: nessuna edizione 2026 disponibile; nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "wikicfp-photonics",
@@ -34,7 +34,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "wikicfp-optics",
@@ -45,7 +45,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "wikicfp-ml",
@@ -56,7 +56,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "wikicfp-neural",
@@ -67,7 +67,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "optica-events",
@@ -78,7 +78,7 @@
       "error": "",
       "warning": "nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "spie-conferences",
@@ -89,7 +89,7 @@
       "error": "",
       "warning": "nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "ieee-photonics",
@@ -100,7 +100,7 @@
       "error": "HTTP 404",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "eos-events",
@@ -111,7 +111,7 @@
       "error": "SSLError: HTTPSConnectionPool(host='www.myeos.org', port=443): Max retries exceeded with url: /events (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.myeos.org'. (_ssl.c:1016)\")))",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     },
     {
       "id": "llm-search",
@@ -122,7 +122,7 @@
       "error": "",
       "warning": "",
       "skipped": "ANTHROPIC_API_KEY non impostata: fonte LLM disattivata",
-      "checked_at": "2026-09-09"
+      "checked_at": "2026-09-10"
     }
   ]
 }

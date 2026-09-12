@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-11",
+    "generated_at": "2026-09-12",
     "count": 43,
     "note": "ricostruito dopo la correzione del filtro sulle scadenze"
   },
@@ -27,7 +27,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 3,
+      "missing_runs": 4,
       "stale": true,
       "notified": []
     },
@@ -53,7 +53,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 3,
+      "missing_runs": 4,
       "stale": true,
       "notified": []
     },
@@ -79,7 +79,7 @@
       "description": "2026 International Conference on Artificial Intelligence for Society [Chongqing, China] [Aug 14, 2026 - Aug 16, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -105,7 +105,7 @@
       "description": "2026 6th International Conference on Optical Imaging and Image Processing [Nanjing, China] [Aug 28, 2026 - Aug 30, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -131,7 +131,7 @@
       "description": "Principale conferenza europea sulle comunicazioni ottiche.",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -157,7 +157,7 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -183,7 +183,7 @@
       "description": "2026 8th International Conference on Optoelectronic Science and Materials [Jinan, China] [Sep 4, 2026 - Sep 6, 2026]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -209,7 +209,7 @@
       "description": "4th Workshop on Deep Learning meets Neuromorphic Hardware @ ECML PKDD 2026 [Naples] [Sep 7, 2026 - Sep 7, 2026]",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -235,7 +235,7 @@
       "description": "2026 3rd Symposium on Big Data, Neural Networks, and Deep Learning [Changji, Xinjiang, China] [Sep 11, 2026 - Sep 13, 2026]",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -262,7 +262,7 @@
       "score": 3,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-10",
-      "missing_runs": 1,
+      "missing_runs": 2,
       "stale": false,
       "notified": []
     },
@@ -287,7 +287,7 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -313,7 +313,7 @@
       "description": "2026 8th International Conference on Artificial Intelligence and Advanced Manufacturing [Frankfurt, Germany] [Oct 29, 2026 - Oct 31, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -339,7 +339,7 @@
       "description": "2026 4th International Conference on Mathematics and Machine Learning [Changsha, China] [Nov 13, 2026 - Nov 15, 2026]",
       "score": 2,
       "first_seen": "2026-09-09",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -365,7 +365,7 @@
       "description": "16th International Conference on Artificial Intelligence, Soft Computing and Applications [Zurich, Switzerland] [Nov 27, 2026 - Nov 28, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -393,7 +393,7 @@
       "description": "Ospita regolarmente workshop su hardware analogico e calcolo ottico.",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -420,7 +420,7 @@
       "score": 4,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-10",
-      "missing_runs": 1,
+      "missing_runs": 2,
       "stale": false,
       "notified": []
     },
@@ -445,7 +445,7 @@
       "description": "2026 International Conference on Artificial Intelligence and New Materials Development [Kuala Lumpur, Malaysia] [Dec 18, 2026 - Dec 20, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -471,7 +471,7 @@
       "description": "7th International Conference on Machine Learning Techniques [Sydney, Australia] [Dec 19, 2026 - Dec 20, 2026]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -497,7 +497,7 @@
       "description": "9th Workshop on Accelerated Machine Learning (AccML) [Glasgow, United Kingdom] [Jan 19, 2027 - Jan 19, 2027]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -524,7 +524,7 @@
       "description": "Il più grande evento fotonico dell'anno; include AI in biophotonics.",
       "score": 9,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -550,7 +550,7 @@
       "description": "15th International Conference on Photonics, Optics and Laser Technology [Valletta, Malta] [Feb 25, 2027 - Feb 27, 2027]",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -576,7 +576,7 @@
       "description": "Comunicazioni ottiche; ospita lavori su interconnessioni ottiche per AI.",
       "score": 7,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -602,7 +602,7 @@
       "description": "IX International Conference on Advances in Signal Processing and Artificial Intelligence [Hulhule Island Hotel, Malé, Maldives] [Mar 23, 2027 - Mar 25, 2027]",
       "score": 1,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -632,7 +632,7 @@
       "description": "Edizione europea, con track su nanofotonica e photonic computing.",
       "score": 20,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -658,7 +658,7 @@
       "description": "Ottica integrata: il substrato tecnologico dei processori fotonici.",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -684,7 +684,7 @@
       "description": "",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -712,7 +712,7 @@
       "description": "Congresso di riferimento su laser ed elettro-ottica, con sessioni su photonic computing.",
       "score": 22,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -738,7 +738,7 @@
       "description": "10th International Conference on Optics, Photonics and Lasers [Crowne Plaza hotel, Geneva, Switzerland] [May 3, 2027 - May 5, 2027]",
       "score": 4,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -765,7 +765,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-07",
-      "missing_runs": 4,
+      "missing_runs": 5,
       "stale": true,
       "notified": []
     },
@@ -790,7 +790,7 @@
       "description": "2027 12th International Conference on Machine Learning Technologies (ICMLT 2027) [Stockholm, Sweden] [May 21, 2027 - May 23, 2027]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -816,7 +816,7 @@
       "description": "International Work-Conference on Artificial Neural Networks [Tenerife, Spain] [Jun 14, 2027 - Jun 16, 2027]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -842,7 +842,7 @@
       "description": "2027 8th International Conference on Computer Vision and Information Technology (CVIT 2027) [Rome, Italy] [Jun 16, 2027 - Jun 18, 2027]",
       "score": 1,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -868,7 +868,7 @@
       "description": "IEEE--2027 7th International Conference on Software Engineering and Artificial Intelligence (SEAI 2027) [Quanzhou, China] [Jun 18, 2027 - Jun 20, 2027]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -894,7 +894,7 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -921,7 +921,7 @@
       "description": "Edizione europea di CLEO, congiunta con EQEC sull'ottica quantistica.",
       "score": 8,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -948,7 +948,7 @@
       "description": "Sistemi neuromorfici, incluse implementazioni fotoniche.",
       "score": 14,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -974,7 +974,7 @@
       "description": "",
       "score": 6,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1001,7 +1001,7 @@
       "description": "Sessioni tematiche che toccano ottica, materia condensata e machine learning.",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1027,7 +1027,7 @@
       "description": "",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1054,7 +1054,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 3,
+      "missing_runs": 4,
       "stale": true,
       "notified": []
     },
@@ -1079,7 +1079,7 @@
       "description": "2027 IEEE International Conference on Artificial Intelligence and Generated Content (ICAIGC 2027) [Melaka, Malaysia] [Aug 14, 2027 - Aug 16, 2027]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1105,7 +1105,7 @@
       "description": "2027 International Conference on Artificial Intelligence and Intelligent Education (AIIE 2027) [Guangzhou, China] [Oct 15, 2027 - Oct 17, 2027]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1131,7 +1131,7 @@
       "description": "International Journal on Soft Computing, Artificial Intelligence and Applications",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-09-11",
+      "last_seen": "2026-09-12",
       "missing_runs": 0,
       "stale": false,
       "notified": []

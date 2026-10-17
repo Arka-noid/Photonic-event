@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-10-16",
-    "count": 59,
+    "generated_at": "2026-10-17",
+    "count": 61,
     "note": "ricostruito dopo la correzione del filtro sulle scadenze"
   },
   "events": [
@@ -27,7 +27,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 38,
+      "missing_runs": 39,
       "stale": true,
       "notified": []
     },
@@ -53,7 +53,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 38,
+      "missing_runs": 39,
       "stale": true,
       "notified": []
     },
@@ -80,7 +80,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-15",
-      "missing_runs": 31,
+      "missing_runs": 32,
       "stale": true,
       "notified": []
     },
@@ -106,7 +106,7 @@
       "score": 5,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-30",
-      "missing_runs": 16,
+      "missing_runs": 17,
       "stale": true,
       "notified": []
     },
@@ -132,7 +132,7 @@
       "score": 5,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-30",
-      "missing_runs": 16,
+      "missing_runs": 17,
       "stale": true,
       "notified": []
     },
@@ -158,7 +158,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-10-06",
-      "missing_runs": 10,
+      "missing_runs": 11,
       "stale": true,
       "notified": []
     },
@@ -184,7 +184,7 @@
       "score": 4,
       "first_seen": "2026-09-06",
       "last_seen": "2026-10-07",
-      "missing_runs": 9,
+      "missing_runs": 10,
       "stale": true,
       "notified": []
     },
@@ -210,7 +210,7 @@
       "score": 4,
       "first_seen": "2026-09-06",
       "last_seen": "2026-10-13",
-      "missing_runs": 3,
+      "missing_runs": 4,
       "stale": true,
       "notified": []
     },
@@ -236,7 +236,7 @@
       "score": 3,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-10",
-      "missing_runs": 36,
+      "missing_runs": 37,
       "stale": true,
       "notified": []
     },
@@ -261,7 +261,7 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -288,7 +288,7 @@
       "score": 1,
       "first_seen": "2026-09-17",
       "last_seen": "2026-10-13",
-      "missing_runs": 3,
+      "missing_runs": 4,
       "stale": true,
       "notified": []
     },
@@ -314,7 +314,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-15",
-      "missing_runs": 31,
+      "missing_runs": 32,
       "stale": true,
       "notified": []
     },
@@ -339,7 +339,7 @@
       "description": "2026 2nd International Conference on Optical Imaging and Detection Technology [Beijing, China] [Oct 30, 2026 - Nov 1, 2026]",
       "score": 1,
       "first_seen": "2026-09-21",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -366,7 +366,7 @@
       "score": 2,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-29",
-      "missing_runs": 17,
+      "missing_runs": 18,
       "stale": true,
       "notified": []
     },
@@ -392,7 +392,7 @@
       "score": 3,
       "first_seen": "2026-09-16",
       "last_seen": "2026-10-15",
-      "missing_runs": 1,
+      "missing_runs": 2,
       "stale": false,
       "notified": []
     },
@@ -418,7 +418,7 @@
       "score": 2,
       "first_seen": "2026-09-15",
       "last_seen": "2026-10-15",
-      "missing_runs": 1,
+      "missing_runs": 2,
       "stale": false,
       "notified": []
     },
@@ -443,7 +443,7 @@
       "description": "2026 8th International Conference on Optoelectronic Materials and Devices [Shenzhen, China] [Nov 27, 2026 - Nov 29, 2026]",
       "score": 2,
       "first_seen": "2026-09-23",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -470,7 +470,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-14",
-      "missing_runs": 32,
+      "missing_runs": 33,
       "stale": true,
       "notified": []
     },
@@ -495,7 +495,7 @@
       "description": "2026 6th International Symposium on Artificial Intelligence and Intelligent Manufacturing [Guangzhou, China] [Nov 27, 2026 - Nov 29, 2026]",
       "score": 1,
       "first_seen": "2026-09-24",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -523,7 +523,7 @@
       "description": "Ospita regolarmente workshop su hardware analogico e calcolo ottico.",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -549,7 +549,7 @@
       "description": "9th International Conference on Machine Learning for Networking [Paris, France] [Dec 1, 2026 - Dec 3, 2026]",
       "score": 2,
       "first_seen": "2026-10-13",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -575,7 +575,7 @@
       "description": "2026 6th International Conference on Optical Imaging and Image Processing [Nanjing, China] [Aug 28, 2026 - Aug 30, 2026]",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -602,7 +602,7 @@
       "score": 4,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-10",
-      "missing_runs": 36,
+      "missing_runs": 37,
       "stale": true,
       "notified": []
     },
@@ -628,7 +628,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-15",
-      "missing_runs": 31,
+      "missing_runs": 32,
       "stale": true,
       "notified": []
     },
@@ -653,7 +653,7 @@
       "description": "7th International Conference on Machine Learning Techniques [Sydney, Australia] [Dec 19, 2026 - Dec 20, 2026]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -679,7 +679,7 @@
       "description": "International Conference on Artificial Intelligence and Applications [Dubai, UAE] [Dec 26, 2026 - Dec 27, 2026]",
       "score": 1,
       "first_seen": "2026-09-22",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -706,7 +706,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-15",
-      "missing_runs": 31,
+      "missing_runs": 32,
       "stale": true,
       "notified": []
     },
@@ -732,7 +732,33 @@
       "description": "Il più grande evento fotonico dell'anno; include AI in biophotonics.",
       "score": 9,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
+      "missing_runs": 0,
+      "stale": false,
+      "notified": []
+    },
+    {
+      "id": "97efb45b7209c3d8",
+      "title": "WMAC 2027 : Third Workshop on Multi-Agent Collaboration: Measuring Collective Intelligence in Agentic Systems (AAAI-27)",
+      "url": "https://multiagents.org/2027/",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203789&copyownerid=189381",
+      "link_resolved": true,
+      "kind": "workshop",
+      "topics": [
+        "ml"
+      ],
+      "start": "2027-02-22",
+      "end": "2027-02-23",
+      "location": "Montréal, Canada",
+      "region": "north-america",
+      "deadlines": {},
+      "source": "wikicfp-ml",
+      "confidence": "confirmed",
+      "date_precision": "day",
+      "description": "Third Workshop on Multi-Agent Collaboration: Measuring Collective Intelligence in Agentic Systems (AAAI-27) [Montréal, Canada] [Feb 22, 2027 - Feb 23, 2027]",
+      "score": 3,
+      "first_seen": "2026-10-17",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -758,7 +784,7 @@
       "description": "15th International Conference on Photonics, Optics and Laser Technology [Valletta, Malta] [Feb 25, 2027 - Feb 27, 2027]",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -784,7 +810,7 @@
       "description": "Comunicazioni ottiche; ospita lavori su interconnessioni ottiche per AI.",
       "score": 7,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -811,7 +837,7 @@
       "score": 1,
       "first_seen": "2026-09-11",
       "last_seen": "2026-10-07",
-      "missing_runs": 9,
+      "missing_runs": 10,
       "stale": true,
       "notified": []
     },
@@ -840,33 +866,7 @@
       "description": "Edizione europea, con track su nanofotonica e photonic computing.",
       "score": 20,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
-      "missing_runs": 0,
-      "stale": false,
-      "notified": []
-    },
-    {
-      "id": "73dd744f25fa8806",
-      "title": "ECIO (European Conference on Integrated Optics) 2027",
-      "url": "https://www.ecio-conference.org/",
-      "listing_url": "",
-      "link_resolved": false,
-      "kind": "conference",
-      "topics": [
-        "photonics"
-      ],
-      "start": "2027-04-01",
-      "end": null,
-      "location": null,
-      "region": "europe",
-      "deadlines": {},
-      "source": "watchlist",
-      "confidence": "unconfirmed",
-      "date_precision": "month",
-      "description": "Ottica integrata: il substrato tecnologico dei processori fotonici.",
-      "score": 5,
-      "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -893,7 +893,7 @@
       "score": 2,
       "first_seen": "2026-09-16",
       "last_seen": "2026-10-09",
-      "missing_runs": 7,
+      "missing_runs": 8,
       "stale": true,
       "notified": []
     },
@@ -918,7 +918,7 @@
       "description": "",
       "score": 4,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -946,7 +946,7 @@
       "description": "Congresso di riferimento su laser ed elettro-ottica, con sessioni su photonic computing.",
       "score": 22,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -972,7 +972,7 @@
       "description": "10th International Conference on Optics, Photonics and Lasers [Crowne Plaza hotel, Geneva, Switzerland] [May 3, 2027 - May 5, 2027]",
       "score": 4,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -999,7 +999,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-07",
-      "missing_runs": 39,
+      "missing_runs": 40,
       "stale": true,
       "notified": []
     },
@@ -1025,8 +1025,34 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-25",
-      "missing_runs": 21,
+      "missing_runs": 22,
       "stale": true,
+      "notified": []
+    },
+    {
+      "id": "73dd744f25fa8806",
+      "title": "ECIO (European Conference on Integrated Optics) 2027",
+      "url": "https://www.ecio-conference.org/",
+      "listing_url": "",
+      "link_resolved": false,
+      "kind": "conference",
+      "topics": [
+        "photonics"
+      ],
+      "start": "2027-05-24",
+      "end": "2027-05-27",
+      "location": null,
+      "region": "europe",
+      "deadlines": {},
+      "source": "watchlist",
+      "confidence": "confirmed",
+      "date_precision": "day",
+      "description": "Ottica integrata: il substrato tecnologico dei processori fotonici.",
+      "score": 5,
+      "first_seen": "2026-09-06",
+      "last_seen": "2026-10-17",
+      "missing_runs": 0,
+      "stale": false,
       "notified": []
     },
     {
@@ -1052,7 +1078,7 @@
       "score": 3,
       "first_seen": "2026-09-15",
       "last_seen": "2026-10-15",
-      "missing_runs": 1,
+      "missing_runs": 2,
       "stale": false,
       "notified": []
     },
@@ -1077,7 +1103,7 @@
       "description": "International Work-Conference on Artificial Neural Networks [Tenerife, Spain] [Jun 14, 2027 - Jun 16, 2027]",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1104,7 +1130,7 @@
       "score": 1,
       "first_seen": "2026-09-11",
       "last_seen": "2026-10-07",
-      "missing_runs": 9,
+      "missing_runs": 10,
       "stale": true,
       "notified": []
     },
@@ -1130,7 +1156,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-14",
-      "missing_runs": 32,
+      "missing_runs": 33,
       "stale": true,
       "notified": []
     },
@@ -1155,7 +1181,33 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
+      "missing_runs": 0,
+      "stale": false,
+      "notified": []
+    },
+    {
+      "id": "b24a93d499ae0dd5",
+      "title": "CVPR 2027 : The IEEE / CVF Computer Vision and Pattern Recognition Conference",
+      "url": "https://cvpr.thecvf.com/Conferences/2027",
+      "listing_url": "http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=203783&copyownerid=169708",
+      "link_resolved": true,
+      "kind": "conference",
+      "topics": [
+        "ml"
+      ],
+      "start": "2027-06-20",
+      "end": "2027-06-25",
+      "location": "Seattle, WA, United States of America",
+      "region": "north-america",
+      "deadlines": {},
+      "source": "wikicfp-ml",
+      "confidence": "confirmed",
+      "date_precision": "day",
+      "description": "The IEEE / CVF Computer Vision and Pattern Recognition Conference [Seattle, WA, United States of America] [Jun 20, 2027 - Jun 25, 2027]",
+      "score": 5,
+      "first_seen": "2026-10-17",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1182,7 +1234,7 @@
       "score": 2,
       "first_seen": "2026-09-16",
       "last_seen": "2026-10-16",
-      "missing_runs": 0,
+      "missing_runs": 1,
       "stale": false,
       "notified": []
     },
@@ -1208,7 +1260,7 @@
       "description": "Edizione europea di CLEO, congiunta con EQEC sull'ottica quantistica.",
       "score": 8,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1235,7 +1287,7 @@
       "description": "Sistemi neuromorfici, incluse implementazioni fotoniche.",
       "score": 14,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1261,7 +1313,7 @@
       "description": "",
       "score": 6,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1288,7 +1340,7 @@
       "description": "Sessioni tematiche che toccano ottica, materia condensata e machine learning.",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1314,7 +1366,7 @@
       "description": "",
       "score": 2,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1340,7 +1392,7 @@
       "description": "Springer--2027 11th International Conference on Artificial Intelligence and Virtual Reality (AIVR 2027) [Kobe, Japan] [Jul 10, 2027 - Jul 13, 2027]",
       "score": 1,
       "first_seen": "2026-09-30",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1366,7 +1418,7 @@
       "description": "META 2027, 17th International Conference on Metamaterials, Photonic Crystals &amp; Plasmonics [Niagara Falls, Ontario, Canada] [Jul 13, 2027 - Jul 16, 2027]",
       "score": 2,
       "first_seen": "2026-09-26",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1393,7 +1445,7 @@
       "score": 2,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-08",
-      "missing_runs": 38,
+      "missing_runs": 39,
       "stale": true,
       "notified": []
     },
@@ -1419,7 +1471,7 @@
       "score": 1,
       "first_seen": "2026-09-21",
       "last_seen": "2026-10-16",
-      "missing_runs": 0,
+      "missing_runs": 1,
       "stale": false,
       "notified": []
     },
@@ -1445,7 +1497,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-23",
-      "missing_runs": 23,
+      "missing_runs": 24,
       "stale": true,
       "notified": []
     },
@@ -1470,7 +1522,7 @@
       "description": "Principale conferenza europea sulle comunicazioni ottiche.",
       "score": 5,
       "first_seen": "2026-10-01",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1496,7 +1548,7 @@
       "description": "",
       "score": 5,
       "first_seen": "2026-10-01",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []
@@ -1523,7 +1575,7 @@
       "score": 1,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-14",
-      "missing_runs": 32,
+      "missing_runs": 33,
       "stale": true,
       "notified": []
     },
@@ -1548,7 +1600,7 @@
       "description": "International Journal on Soft Computing, Artificial Intelligence and Applications",
       "score": 1,
       "first_seen": "2026-09-06",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "missing_runs": 0,
       "stale": false,
       "notified": []

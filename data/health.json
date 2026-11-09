@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-08",
-  "ok": 5,
+  "checked_at": "2026-11-09",
+  "ok": 9,
   "total": 11,
   "sources": [
     {
@@ -12,7 +12,7 @@
       "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "ai-deadlines",
@@ -23,51 +23,51 @@
       "error": "",
       "warning": "dataset fermo al 2025: nessuna edizione 2026 disponibile; nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "wikicfp-photonics",
       "name": "WikiCFP — categoria photonics",
-      "ok": false,
-      "http_status": null,
-      "n_events": 0,
-      "error": "ConnectTimeout: HTTPConnectionPool(host='www.wikicfp.com', port=80): Max retries exceeded with url: /cfp/rss?cat=photonics (Caused by ConnectTimeoutError(<HTTPConnection(host='www.wikicfp.com', port=80) at 0x7ad02ecead90>, 'Connection to www.wikicfp.com timed out. (connect timeout=25)'))",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 16,
+      "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "wikicfp-optics",
       "name": "WikiCFP — categoria optics",
-      "ok": false,
-      "http_status": null,
-      "n_events": 0,
-      "error": "ConnectTimeout: HTTPConnectionPool(host='www.wikicfp.com', port=80): Max retries exceeded with url: /cfp/rss?cat=optics (Caused by ConnectTimeoutError(<HTTPConnection(host='www.wikicfp.com', port=80) at 0x7ad02ea05410>, 'Connection to www.wikicfp.com timed out. (connect timeout=25)'))",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 16,
+      "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "wikicfp-ml",
       "name": "WikiCFP — categoria machine learning",
-      "ok": false,
-      "http_status": null,
-      "n_events": 0,
-      "error": "ConnectTimeout: HTTPConnectionPool(host='www.wikicfp.com', port=80): Max retries exceeded with url: /cfp/rss?cat=machine%20learning (Caused by ConnectTimeoutError(<HTTPConnection(host='www.wikicfp.com', port=80) at 0x7ad02e997990>, 'Connection to www.wikicfp.com timed out. (connect timeout=25)'))",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 9,
+      "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "wikicfp-neural",
       "name": "WikiCFP — categoria neural networks",
-      "ok": false,
-      "http_status": null,
-      "n_events": 0,
-      "error": "ConnectTimeout: HTTPConnectionPool(host='www.wikicfp.com', port=80): Max retries exceeded with url: /cfp/rss?cat=neural%20networks (Caused by ConnectTimeoutError(<HTTPConnection(host='www.wikicfp.com', port=80) at 0x7ad02f799e10>, 'Connection to www.wikicfp.com timed out. (connect timeout=25)'))",
+      "ok": true,
+      "http_status": 200,
+      "n_events": 8,
+      "error": "",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "optica-events",
@@ -78,7 +78,7 @@
       "error": "",
       "warning": "nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "spie-conferences",
@@ -89,7 +89,7 @@
       "error": "",
       "warning": "nessun evento estratto (selettore da verificare?)",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "ieee-photonics",
@@ -100,7 +100,7 @@
       "error": "HTTP 404",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "eos-events",
@@ -111,7 +111,7 @@
       "error": "SSLError: HTTPSConnectionPool(host='www.myeos.org', port=443): Max retries exceeded with url: /events (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.myeos.org'. (_ssl.c:1018)\")))",
       "warning": "",
       "skipped": "",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     },
     {
       "id": "llm-search",
@@ -122,7 +122,7 @@
       "error": "",
       "warning": "",
       "skipped": "ANTHROPIC_API_KEY non impostata: fonte LLM disattivata",
-      "checked_at": "2026-11-08"
+      "checked_at": "2026-11-09"
     }
   ]
 }
